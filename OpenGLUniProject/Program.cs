@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using OpenGLUniProject.Core;
 
 namespace OpenGLUniProject
 {
@@ -10,6 +7,10 @@ namespace OpenGLUniProject
     {
         static void Main(string[] args)
         {
+            using (var instance = new Engine(args))
+            {
+                instance.Run();
+            }
         }
     }
 }
