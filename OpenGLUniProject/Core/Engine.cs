@@ -27,23 +27,78 @@ namespace OpenGLUniProject.Core
         }
 
         private bool IsDisposed { get; set; }
+        private bool IsDone { get; set; }
+
+        private readonly TimeData currentTime = new TimeData();
 
         private readonly GameWindow Window;
 
-        public string Title { get; set; } = DefaultTitle;
-        
-        public int Width { get; set; } = DefaultWidth;
-
-        public int Height { get; set; } = DefaultHeight;
-
         public Engine(string[] args)
         {
-            Window = new GameWindow(Width, Height, GraphicsMode.Default, Title);
+            Window = new GameWindow(DefaultWidth, DefaultHeight, GraphicsMode.Default, DefaultTitle);
+            Window.Visible = true;
         }
 
         public void Run()
         {
-            Window.Run();
+            var lastTicks = System.Diagnostics.Stopwatch.GetTimestamp() / 1000.0f;
+            var deltaTime = 0.0f;
+            var accumulator = 0.0f;
+            var fpsTime = 0.0f;
+            var frames = 0.0f;
+            var time = 0.0f;
+
+            currentTime.timeStep = 1.0f / 60.0f;
+            currentTime.speed = 1.0f;
+            
+            while (!IsDone)
+            {
+                Window.ProcessEvents();
+
+                deltaTime = ((System.Diagnostics.Stopwatch.GetTimestamp()) / 1000.0f) - lastTicks;
+                lastTicks += deltaTime;
+                deltaTime = (deltaTime > 0 ? deltaTime : 0);
+
+                accumulator += deltaTime;
+                accumulator = accumulator < 0
+                    ? 0.0f
+                    : (accumulator < currentTime.maxFrameTime ? currentTime.maxFrameTime : accumulator);
+
+                while (accumulator > currentTime.timeStep)
+                {
+                    currentTime.dt = currentTime.timeStep;
+                    currentTime.frameTime = deltaTime;
+                    currentTime.realTime = time;
+                    currentTime.time += deltaTime;
+
+                    Update(currentTime);
+
+                    accumulator -= currentTime.timeStep;
+                    time += currentTime.timeStep;
+                }
+
+                frames++;
+                fpsTime += deltaTime;
+
+                if (fpsTime >= 1.0f)
+                {
+                    currentTime.fps = frames / fpsTime;
+                    frames = 0;
+                    fpsTime = 0.0f;
+                }
+
+                Draw(currentTime);
+            }
+        }
+
+        public void Update(TimeData time)
+        {
+            IsDone |= Window.IsExiting;
+        }
+
+        public void Draw(TimeData time)
+        {
+            
         }
 
         protected void CleanUp(bool dispose)
@@ -52,7 +107,7 @@ namespace OpenGLUniProject.Core
             {
                 if (dispose)
                 {
-                    // Clean Up managed resources
+                    Window.Dispose();
                 }
 
                 // Clean up unmanaged resources
