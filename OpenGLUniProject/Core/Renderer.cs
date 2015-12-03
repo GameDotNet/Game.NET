@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenGLUniProject.Core.Model;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
@@ -71,38 +72,38 @@ namespace OpenGLUniProject.Core
             
             GL.Color4(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
 
-            bool tex_enabled = GL.IsEnabled(EnableCap.Texture2D);
-            if (!tex_enabled)
-                GL.Enable(EnableCap.Texture2D);
+            //bool tex_enabled = GL.IsEnabled(EnableCap.Texture2D);
+            //if (!tex_enabled)
+            //    GL.Enable(EnableCap.Texture2D);
 
-            foreach (var subMesh in mesh.subMeshes)
+            foreach (var subMesh in mesh.SubMeshes)
             {
-                foreach (var face in subMesh.faces)
+                foreach (var face in subMesh.Faces)
                 {
                     var i = 0;
-                    if (face.material != null && face.material.diffTex != null || material != null)
+                    /*if (face.material != null && face.material.diffTex != null || material != null)
                     {
                         if (material != null && material.diffTex != null)
                             GL.BindTexture(TextureTarget.Texture2D, material.diffTex.Id);
                         else
                             GL.BindTexture(TextureTarget.Texture2D, face.material.diffTex.Id);
-                    }
+                    }*/
                     GL.Begin(mode);
-                    foreach (var item in face.items)
+                    foreach (var item in face.Items)
                     {
-                        if (item.normal != 0 && item.normal - 1 < subMesh.normals.Count)
+                        if (item.Normal != 0 && item.Normal - 1 < subMesh.Normals.Count)
                         {
-                            var n = subMesh.normals[(int)item.normal - 1];
+                            var n = subMesh.Normals[(int)item.Normal - 1];
                             GL.Normal3(n.X, n.Y, n.Z);
                         }
-                        if (item.texture != 0 && item.texture - 1 < subMesh.textures.Count)
+                        if (item.Texture != 0 && item.Texture - 1 < subMesh.Textures.Count)
                         {
-                            var t = subMesh.textures[(int)item.texture - 1];
+                            var t = subMesh.Textures[(int)item.Texture - 1];
                             GL.TexCoord2(t.X, t.Y);
                         }
-                        if (item.vertex != 0 && item.vertex - 1 < subMesh.vertices.Count)
+                        if (item.Vertex != 0 && item.Vertex - 1 < subMesh.Vertices.Count)
                         {
-                            var v = subMesh.vertices[(int)item.vertex - 1];
+                            var v = subMesh.Vertices[(int)item.Vertex - 1];
                             GL.Vertex3(v.X, v.Y, v.Z);
                         }
                         i++;
@@ -112,8 +113,8 @@ namespace OpenGLUniProject.Core
             }
             GL.Color4(color_buff);
 
-            if (!tex_enabled)
-                GL.Disable(EnableCap.Texture2D);
+            //if (!tex_enabled)
+            //    GL.Disable(EnableCap.Texture2D);
         }
 
         public void TempDraw()
@@ -122,6 +123,14 @@ namespace OpenGLUniProject.Core
             {
                 GL.MatrixMode(MatrixMode.Modelview);
                 GL.LoadIdentity();
+                
+                GL.Rotate(20.0f, 0, 0, 0);
+                //GL.Translate(0, -2f, -5.5);
+
+                if (ResourceManager.Contains<Mesh>("mesh"))
+                {
+                    DrawMesh(ResourceManager.Get<Mesh>("mesh"), Color.Gold);               
+                }
             }
             GL.PopMatrix();
         }
