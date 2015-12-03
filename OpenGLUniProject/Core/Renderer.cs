@@ -10,7 +10,7 @@ using OpenTK.Graphics.OpenGL;
 
 namespace OpenGLUniProject.Core
 {
-    class Renderer
+    public class Renderer
     {
         public Color4 ClearColor = Color4.DarkSlateBlue;
 
