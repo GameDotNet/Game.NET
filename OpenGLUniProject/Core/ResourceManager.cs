@@ -27,14 +27,9 @@ namespace OpenGLUniProject.Core
             }
         }
 
-        public static T Insert<T>(string name, T resource) where T : Resource
+        public static void AddOrUpdate<T>(string name, T resource) where T : Resource
         {
-            if (Contains<T>(name))
-                return Resources[name] as T;
-
-            resource.Name = name;
             Resources[name] = resource;
-            return (T)resource;
         }
 
         public static bool Contains<T>(string name) where T : Resource

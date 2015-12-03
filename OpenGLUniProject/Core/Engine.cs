@@ -18,33 +18,32 @@ namespace OpenGLUniProject.Core
 
         public class TimeData
         {
-            public float dt;
-            public float time;
-            public float fps;
-            public float frameTime;
-            public float realTime;
-            public float speed;
-            public float timeStep;
-            public float maxFrameTime;
+            public float Dt;
+            public float Time;
+            public float Fps;
+            public float FrameTime;
+            public float RealTime;
+            public float Speed;
+            public float TimeStep;
+            public float MaxFrameTime;
         }
 
         private bool IsDisposed { get; set; }
         private bool IsDone { get; set; }
 
-        private readonly TimeData currentTime = new TimeData();
+        private readonly TimeData _currentTime = new TimeData();
 
-        private readonly GameWindow Window;
-        private readonly Renderer renderer;
-        private readonly GraphicsContext context;
+        private readonly GameWindow _window;
+        private readonly Renderer _renderer;
 
         public Engine(string[] args)
         {
-            Window = new GameWindow(DefaultWidth, DefaultHeight, GraphicsMode.Default, DefaultTitle);
-            Window.Visible = true;
-
-            renderer = new Renderer(Window);
-            Window.Closing += OnClosing;
-            Window.KeyUp += WindowOnKeyUp;
+            _window = new GameWindow(DefaultWidth, DefaultHeight, GraphicsMode.Default, DefaultTitle);
+            _window.Visible = true;
+            _window.Closing += OnClosing;
+            _window.KeyUp += WindowOnKeyUp;
+            
+            _renderer = new Renderer(_window);
         }
 
         public void Run()
@@ -56,14 +55,14 @@ namespace OpenGLUniProject.Core
             var frames = 0.0f;
             var time = 0.0f;
 
-            currentTime.timeStep = 1.0f / 60.0f;
-            currentTime.speed = 1.0f;
+            _currentTime.TimeStep = 1.0f / 60.0f;
+            _currentTime.Speed = 1.0f;
 
             while (!IsDone)
             {
-                Window.ProcessEvents();
+                _window.ProcessEvents();
 
-                if (!Window.Exists || Window.IsExiting)
+                if (!_window.Exists || _window.IsExiting)
                     break;
 
                 deltaTime = ((System.Diagnostics.Stopwatch.GetTimestamp()) / 1000.0f) - lastTicks;
@@ -73,19 +72,19 @@ namespace OpenGLUniProject.Core
                 accumulator += deltaTime;
                 accumulator = accumulator < 0
                     ? 0.0f
-                    : (accumulator < currentTime.maxFrameTime ? currentTime.maxFrameTime : accumulator);
+                    : (accumulator < _currentTime.MaxFrameTime ? _currentTime.MaxFrameTime : accumulator);
 
-                while (accumulator > currentTime.timeStep)
+                while (accumulator > _currentTime.TimeStep)
                 {
-                    currentTime.dt = currentTime.timeStep;
-                    currentTime.frameTime = deltaTime;
-                    currentTime.realTime = time;
-                    currentTime.time += deltaTime;
+                    _currentTime.Dt = _currentTime.TimeStep;
+                    _currentTime.FrameTime = deltaTime;
+                    _currentTime.RealTime = time;
+                    _currentTime.Time += deltaTime;
 
-                    Update(currentTime);
+                    Update(_currentTime);
 
-                    accumulator -= currentTime.timeStep;
-                    time += currentTime.timeStep;
+                    accumulator -= _currentTime.TimeStep;
+                    time += _currentTime.TimeStep;
                 }
 
                 frames++;
@@ -93,12 +92,12 @@ namespace OpenGLUniProject.Core
 
                 if (fpsTime >= 1.0f)
                 {
-                    currentTime.fps = frames / fpsTime;
+                    _currentTime.Fps = frames / fpsTime;
                     frames = 0;
                     fpsTime = 0.0f;
                 }
 
-                Draw(currentTime);
+                Draw(_currentTime);
             }
         }
 
@@ -109,11 +108,11 @@ namespace OpenGLUniProject.Core
 
         public void Draw(TimeData time)
         {
-            renderer.Begin();
+            _renderer.Begin();
             {
 
             }
-            renderer.End();
+            _renderer.End();
         }
 
         protected void CleanUp(bool dispose)
@@ -122,7 +121,7 @@ namespace OpenGLUniProject.Core
             {
                 if (dispose)
                 {
-                    Window.Dispose();
+                    _window.Dispose();
                 }
 
                 // Clean up unmanaged resources
@@ -183,7 +182,7 @@ namespace OpenGLUniProject.Core
                     Mesh mesh = parser.Parse(filePath);
                     if (mesh != null)
                     {
-                        ResourceManager.Insert("mesh", mesh);
+                        ResourceManager.AddOrUpdate("mesh", mesh);
                     }
                 }
                 catch (IOException exception)
