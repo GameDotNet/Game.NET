@@ -39,8 +39,7 @@ namespace OpenGLUniProject.Core
 
         public Engine(string[] args)
         {
-            Window = new GameWindow(DefaultWidth, DefaultHeight, GraphicsMode.Default, DefaultTitle);
-            Window.Visible = true;
+            Window = new GameWindow(DefaultWidth, DefaultHeight, GraphicsMode.Default, DefaultTitle) {Visible = true};
 
             renderer = new Renderer(Window);
             Window.Closing += OnClosing;
@@ -115,7 +114,7 @@ namespace OpenGLUniProject.Core
         {
             renderer.Begin();
             {
-
+                renderer.TempDraw();
             }
             renderer.End();
         }
