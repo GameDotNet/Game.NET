@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
+using OpenGLUniProject.Core.Model;
 using OpenTK;
 using OpenTK.Graphics;
-using OpenTK.Platform;
+using OpenTK.Input;
 
 namespace OpenGLUniProject.Core
 {
@@ -44,11 +44,7 @@ namespace OpenGLUniProject.Core
 
             renderer = new Renderer(Window);
             Window.Closing += OnClosing;
-        }
-        
-        private void OnClosing(object sender, CancelEventArgs cancelEventArgs)
-        {
-            IsDone = true;
+            Window.KeyUp += WindowOnKeyUp;
         }
 
         public void Run()
@@ -62,13 +58,13 @@ namespace OpenGLUniProject.Core
 
             currentTime.timeStep = 1.0f / 60.0f;
             currentTime.speed = 1.0f;
-            
+
             while (!IsDone)
             {
                 Window.ProcessEvents();
 
-				if(!Window.Exists || Window.IsExiting)
-					break;
+                if (!Window.Exists || Window.IsExiting)
+                    break;
 
                 deltaTime = ((System.Diagnostics.Stopwatch.GetTimestamp()) / 1000.0f) - lastTicks;
                 lastTicks += deltaTime;
@@ -145,6 +141,57 @@ namespace OpenGLUniProject.Core
         ~Engine()
         {
             CleanUp(false);
+        }
+
+        private void WindowOnKeyUp(object sender, KeyboardKeyEventArgs keyboardKeyEventArgs)
+        {
+            switch (keyboardKeyEventArgs.Key)
+            {
+                case Key.O:
+                    LoadFile();
+                    break;
+                default:
+                    return;
+            }
+        }
+
+        private void OnClosing(object sender, CancelEventArgs cancelEventArgs)
+        {
+            IsDone = true;
+        }
+
+        private void LoadFile()
+        {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                InitialDirectory = "C:\\",
+                Title = "Wybierz plik",
+                CheckFileExists = true,
+                CheckPathExists = true,
+                RestoreDirectory = true,
+                DefaultExt = "obj",
+                Filter = "Object files (*.obj) | *.obj"
+            };
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string filePath = dialog.FileName;
+
+                    MeshParser parser = new MeshParser();
+                    Mesh mesh = parser.Parse(filePath);
+                    if (mesh != null)
+                    {
+                        ResourceManager.Insert("mesh", mesh);
+                    }
+                }
+                catch (IOException exception)
+                {
+                    Debug.WriteLine(exception.ToString());
+                    throw;
+                }
+            }
         }
     }
 }

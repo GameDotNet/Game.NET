@@ -5,6 +5,7 @@ namespace OpenGLUniProject
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             using (var instance = new Engine(args))
