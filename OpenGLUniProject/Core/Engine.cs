@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,11 +33,20 @@ namespace OpenGLUniProject.Core
         private readonly TimeData currentTime = new TimeData();
 
         private readonly GameWindow Window;
+        private readonly Renderer renderer;
 
         public Engine(string[] args)
         {
             Window = new GameWindow(DefaultWidth, DefaultHeight, GraphicsMode.Default, DefaultTitle);
             Window.Visible = true;
+
+            renderer = new Renderer(Window);
+            Window.Closing += OnClosing;
+        }
+
+        private void OnClosing(object sender, CancelEventArgs cancelEventArgs)
+        {
+            IsDone = true;
         }
 
         public void Run()
@@ -54,6 +64,9 @@ namespace OpenGLUniProject.Core
             while (!IsDone)
             {
                 Window.ProcessEvents();
+
+				if(!Window.Exists || Window.IsExiting)
+					break;
 
                 deltaTime = ((System.Diagnostics.Stopwatch.GetTimestamp()) / 1000.0f) - lastTicks;
                 lastTicks += deltaTime;
@@ -93,12 +106,16 @@ namespace OpenGLUniProject.Core
 
         public void Update(TimeData time)
         {
-            IsDone |= Window.IsExiting;
+
         }
 
         public void Draw(TimeData time)
         {
-            
+            renderer.Begin();
+            {
+                
+            }
+            renderer.End();
         }
 
         protected void CleanUp(bool dispose)
