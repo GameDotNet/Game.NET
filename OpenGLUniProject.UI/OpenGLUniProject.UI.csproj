@@ -71,6 +71,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\Renderer.cs" />
     <Compile Include="Resource\MainPage.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

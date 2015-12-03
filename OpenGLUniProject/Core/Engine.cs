@@ -45,19 +45,7 @@ namespace OpenGLUniProject.Core
             renderer = new Renderer(Window);
             Window.Closing += OnClosing;
         }
-
-        public Engine(IntPtr window, IntPtr external_context, GraphicsContext.GetAddressDelegate GetProcAddress, GraphicsContext.GetCurrentContextDelegate GetCurrentContext)
-        {
-            context = new GraphicsContext (
-                new ContextHandle(external_context),
-                (name) => { return GetProcAddress(name); },
-                () => { return GetCurrentContext(); });
-
-            context.MakeCurrent(Utilities.CreateWindowsWindowInfo(window));
-
-            renderer = new Renderer();
-        }
-
+        
         private void OnClosing(object sender, CancelEventArgs cancelEventArgs)
         {
             IsDone = true;
@@ -121,15 +109,6 @@ namespace OpenGLUniProject.Core
         public void Update(TimeData time)
         {
 
-        }
-
-        public void Draw()
-        {
-            renderer.Begin();
-            {
-
-            }
-            renderer.End();
         }
 
         public void Draw(TimeData time)
