@@ -5,18 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OpenGLUniProject.UI"
         xmlns:wpf="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF"
+        xmlns:resource="clr-namespace:OpenGLUniProject.UI.Resource"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_File">
-                    <MenuItem Header="_Open"/>
-                    <MenuItem Header="_Close"/>
-                    <MenuItem Header="_Save"/>
-                </MenuItem>
-            </Menu>
-            <wpf:OpenGLControl x:Name="GlControl" OpenGLDraw="OpenGLDraw" OpenGLInitialized="OnOpenGLInitialized"/>
-        </DockPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Menu DockPanel.Dock="Top">
+                <MenuItem Header="{x:Static resource:MainPage.File}">
+                    <MenuItem Header="{x:Static resource:MainPage.File_Open}" />
+                    <MenuItem Header="{x:Static resource:MainPage.File_Close}" />
+                    </MenuItem>
+                </Menu>
+        </StackPanel>
+        <wpf:OpenGLControl Grid.Row="1" x:Name="GlControl" OpenGLDraw="OpenGLDraw" OpenGLInitialized="OnOpenGLInitialized"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem>
+                    <TextBlock>Jakub Bentkowski, Łukasz Pyrzyk</TextBlock>
+                </StatusBarItem>
+            </StatusBar>
+        </StackPanel>
     </Grid>
 </Window>

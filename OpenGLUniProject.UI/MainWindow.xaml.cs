@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Resources;
+using System.Windows;
 using System.Windows.Interop;
 using SharpGL;
 using SharpGL.SceneGraph;
