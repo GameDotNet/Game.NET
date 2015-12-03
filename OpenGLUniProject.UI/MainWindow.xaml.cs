@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Resources;
+using System.Windows;
+using OpenGLUniProject.UI.Resource;
 using SharpGL.SceneGraph;
 
 namespace OpenGLUniProject.UI
@@ -17,6 +19,7 @@ namespace OpenGLUniProject.UI
         /// <param name="args">Entry arguments</param>
         private void OpenGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
         {
+            
         }
     }
 }
