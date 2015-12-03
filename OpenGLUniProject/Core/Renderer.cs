@@ -16,10 +16,12 @@ namespace OpenGLUniProject.Core
 
         private readonly GameWindow Window;
 
-        public Renderer(GameWindow window)
+        public Renderer(GameWindow window = null)
         {
-            Window = window;
+            if (window == null)
+                return;
 
+            Window = window;
             Window.Resize += Resize; ;
         }
 
@@ -36,7 +38,7 @@ namespace OpenGLUniProject.Core
 
         public void End()
         {
-            Window.SwapBuffers();
+            GraphicsContext.CurrentContext.SwapBuffers();
         }
     }
 }

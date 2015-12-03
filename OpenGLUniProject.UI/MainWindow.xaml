@@ -8,18 +8,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <StackPanel>
-            <DockPanel>
-                <Menu DockPanel.Dock="Top">
-                    <MenuItem Header="_File">
-                        <MenuItem Header="_Open"/>
-                        <MenuItem Header="_Close"/>
-                        <MenuItem Header="_Save"/>
-                    </MenuItem>
-                </Menu>
-                <StackPanel></StackPanel>
-            </DockPanel>
-        </StackPanel>
-        <wpf:OpenGLControl OpenGLDraw="OpenGLControl_OpenGLDraw" />
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Close"/>
+                    <MenuItem Header="_Save"/>
+                </MenuItem>
+            </Menu>
+            <wpf:OpenGLControl x:Name="GlControl" OpenGLDraw="OpenGLDraw" OpenGLInitialized="OnOpenGLInitialized"/>
+        </DockPanel>
     </Grid>
 </Window>

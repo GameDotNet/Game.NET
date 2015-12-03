@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics;
+using OpenTK.Platform;
 
 namespace OpenGLUniProject.Core
 {
-    class Engine : IDisposable
+    public class Engine : IDisposable
     {
         public static readonly int DefaultWidth = 800;
         public static readonly int DefaultHeight = 600;
@@ -34,6 +35,7 @@ namespace OpenGLUniProject.Core
 
         private readonly GameWindow Window;
         private readonly Renderer renderer;
+        private readonly GraphicsContext context;
 
         public Engine(string[] args)
         {
@@ -42,6 +44,18 @@ namespace OpenGLUniProject.Core
 
             renderer = new Renderer(Window);
             Window.Closing += OnClosing;
+        }
+
+        public Engine(IntPtr window, IntPtr external_context, GraphicsContext.GetAddressDelegate GetProcAddress, GraphicsContext.GetCurrentContextDelegate GetCurrentContext)
+        {
+            context = new GraphicsContext (
+                new ContextHandle(external_context),
+                (name) => { return GetProcAddress(name); },
+                () => { return GetCurrentContext(); });
+
+            context.MakeCurrent(Utilities.CreateWindowsWindowInfo(window));
+
+            renderer = new Renderer();
         }
 
         private void OnClosing(object sender, CancelEventArgs cancelEventArgs)
@@ -109,11 +123,20 @@ namespace OpenGLUniProject.Core
 
         }
 
+        public void Draw()
+        {
+            renderer.Begin();
+            {
+
+            }
+            renderer.End();
+        }
+
         public void Draw(TimeData time)
         {
             renderer.Begin();
             {
-                
+
             }
             renderer.End();
         }
