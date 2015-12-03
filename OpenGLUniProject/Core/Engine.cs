@@ -42,7 +42,7 @@ namespace OpenGLUniProject.Core
             _window.Visible = true;
             _window.Closing += OnClosing;
             _window.KeyUp += WindowOnKeyUp;
-            
+
             _renderer = new Renderer(_window);
         }
 
@@ -110,7 +110,7 @@ namespace OpenGLUniProject.Core
         {
             _renderer.Begin();
             {
-
+                renderer.TempDraw();
             }
             _renderer.End();
         }
