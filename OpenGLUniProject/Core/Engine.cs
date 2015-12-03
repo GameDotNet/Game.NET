@@ -110,7 +110,7 @@ namespace OpenGLUniProject.Core
         {
             _renderer.Begin();
             {
-                renderer.TempDraw();
+                _renderer.TempDraw();
             }
             _renderer.End();
         }
