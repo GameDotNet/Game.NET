@@ -4,11 +4,15 @@ namespace ObjParserNet.Core
 {
     public class Face
     {
-        public Face()
+        public Face() : this(new List<FaceItem>())
         {
-            Items = new List<FaceItem>();
         }
 
-        public List<FaceItem> Items { get; set; }
+        public Face(ICollection<FaceItem> items)
+        {
+            Items = items;
+        }
+
+        public ICollection<FaceItem> Items { get; set; }
     }
 }
