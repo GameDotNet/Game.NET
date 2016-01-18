@@ -54,6 +54,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Model\MeshTests.cs" />
     <Compile Include="Model\SubMeshTests.cs" />
     <Compile Include="Model\Vector2DTests.cs" />
     <Compile Include="Model\Vector3DTests.cs" />

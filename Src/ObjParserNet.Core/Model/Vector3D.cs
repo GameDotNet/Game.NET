@@ -2,6 +2,10 @@
 {
     public class Vector3D : Vector2D
     {
+        public Vector3D()
+        {
+        }
+
         public Vector3D(float value) : base(value)
         {
             Z = value;

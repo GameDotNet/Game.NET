@@ -2,6 +2,10 @@
 {
     public class Vector2D : Vector
     {
+        public Vector2D()
+        {
+        }
+
         public Vector2D(float value) : base(value)
         {
             Y = value;

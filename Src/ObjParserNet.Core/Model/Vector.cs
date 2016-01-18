@@ -4,6 +4,10 @@ namespace ObjParserNet.Core
 {
     public class Vector : ICopyable<Vector>
     {
+        public Vector()
+        {
+        }
+
         public Vector(float value)
         {
             X = value;
