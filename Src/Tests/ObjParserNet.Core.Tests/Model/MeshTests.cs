@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using OpenTK;
 using Ploeh.AutoFixture;
 
 namespace ObjParserNet.Core.Tests.Model
@@ -7,6 +8,13 @@ namespace ObjParserNet.Core.Tests.Model
     [TestFixture]
     public class MeshTests
     {
+        void setup()
+        {
+            _fixture.Customize<Vector3>(composer => composer
+                .Without(v => v.Xy)
+                .Without(v => v.Xy));
+        }
+
         private readonly Fixture _fixture = new Fixture();
 
         [Test]
@@ -21,8 +29,8 @@ namespace ObjParserNet.Core.Tests.Model
         public void CanInitializeAllPropertiesByConstructor()
         {
             string filename = _fixture.Create<string>();
-            Vector3D minVertex = _fixture.Create<Vector3D>();
-            Vector3D maxVertex = _fixture.Create<Vector3D>();
+            Vector3 minVertex = Vector3.One;
+            Vector3 maxVertex = Vector3.One;
             List<SubMesh> subMeshes = _fixture.Create<List<SubMesh>>();
         
             Mesh mesh = new Mesh(filename, minVertex, maxVertex, subMeshes);

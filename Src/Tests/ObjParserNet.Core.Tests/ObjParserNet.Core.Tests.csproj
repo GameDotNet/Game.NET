@@ -39,6 +39,10 @@
       <HintPath>..\..\..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\OpenTK.1.1.1589.5942\lib\NET40\OpenTK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ploeh.AutoFixture, Version=3.38.1.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\AutoFixture.3.38.1\lib\net40\Ploeh.AutoFixture.dll</HintPath>
       <Private>True</Private>
@@ -58,9 +62,6 @@
     <Compile Include="Model\FaceItemTests.cs" />
     <Compile Include="Model\MeshTests.cs" />
     <Compile Include="Model\SubMeshTests.cs" />
-    <Compile Include="Model\Vector2DTests.cs" />
-    <Compile Include="Model\Vector3DTests.cs" />
-    <Compile Include="Model\VectorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
