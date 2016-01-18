@@ -62,6 +62,7 @@
     <Compile Include="Model\FaceTests.cs" />
     <Compile Include="Model\FaceItemTests.cs" />
     <Compile Include="Model\MeshTests.cs" />
+    <Compile Include="Model\ShaderFileInfo.cs" />
     <Compile Include="Model\SubMeshTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
