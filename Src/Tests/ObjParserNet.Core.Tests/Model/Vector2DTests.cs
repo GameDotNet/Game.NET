@@ -4,9 +4,9 @@ using Ploeh.AutoFixture;
 namespace ObjParserNet.Core.Tests.Model
 {
     [TestFixture]
-    class Vector2DTests
+    public class Vector2DTests
     {
-        private Fixture _fixture = new Fixture();
+        private readonly Fixture _fixture = new Fixture();
 
         [Test]
         public void CanAssingSingleValueByConstructor()

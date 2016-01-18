@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ObjParserNet.Core.Model;
 
 namespace ObjParserNet.Core
 {
