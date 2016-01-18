@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 
-namespace OpenGLUniProject.Core.Model
+namespace ObjParserNet.Core
 {
     public struct Face
     {
         public List<FaceItem> Items { get; set; }
-        //public Gfx.Material.SubMaterial material;
     }
 }

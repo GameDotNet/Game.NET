@@ -1,8 +1,8 @@
-﻿namespace OpenGLUniProject.Core.Model
+﻿namespace ObjParserNet.Core
 {
     public struct FaceItem
     {
-        public FaceItem(uint vertex = 0, uint texture = 0, uint normal = 0)
+        public FaceItem(uint vertex = 0, uint texture = 0, uint normal = 0) : this()
         {
             Vertex = vertex;
             Texture = texture;

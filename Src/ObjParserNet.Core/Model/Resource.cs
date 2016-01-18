@@ -1,4 +1,4 @@
-﻿namespace OpenGLUniProject.Core.Model
+﻿namespace ObjParserNet.Core
 {
     public abstract class Resource
     {
