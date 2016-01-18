@@ -6,8 +6,8 @@ namespace ObjParserNet.Core
     public class Mesh : Resource
     {
         public string Filename { get; set; }
-        public Vector3 MinVertex { get; internal set; }
-        public Vector3 MaxVertex { get; internal set; }
+        public Vector3 MinVertex;
+        public Vector3 MaxVertex;
 
         public List<SubMesh> SubMeshes { get; set; }
 
