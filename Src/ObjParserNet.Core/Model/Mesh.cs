@@ -18,11 +18,9 @@ namespace ObjParserNet.Core
             SubMeshes = new List<SubMesh>();
         }
 
-        public Mesh(string filename, Vector3 minVertex, Vector3 maxVertex, List<SubMesh> subMeshes)
+        public Mesh(string filename, List<SubMesh> subMeshes)
         {
             Filename = filename;
-            MinVertex = minVertex;
-            MaxVertex = maxVertex;
             SubMeshes = subMeshes;
         }
     }
