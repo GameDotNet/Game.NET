@@ -1,8 +1,12 @@
 ﻿namespace ObjParserNet.Core
 {
-    public struct FaceItem
+    public class FaceItem
     {
-        public FaceItem(uint vertex = 0, uint texture = 0, uint normal = 0) : this()
+        public FaceItem() : this(default(uint), default(uint), default(uint))
+        {
+        }
+
+        public FaceItem(uint vertex, uint texture, uint normal)
         {
             Vertex = vertex;
             Texture = texture;

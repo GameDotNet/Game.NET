@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 
@@ -24,15 +23,14 @@ namespace ObjParserNet.Core.Tests.Model
             string filename = _fixture.Create<string>();
             Vector3D minVertex = _fixture.Create<Vector3D>();
             Vector3D maxVertex = _fixture.Create<Vector3D>();
-
-            List<SubMesh> subMeshes = new List<SubMesh> { new SubMesh() };
-
+            List<SubMesh> subMeshes = _fixture.Create<List<SubMesh>>();
+        
             Mesh mesh = new Mesh(filename, minVertex, maxVertex, subMeshes);
 
             Assert.That(mesh.Filename, Is.EqualTo(filename));
             Assert.That(mesh.MinVertex, Is.EqualTo(minVertex));
             Assert.That(mesh.MaxVertex, Is.EqualTo(maxVertex));
-            Assert.That(mesh.SubMeshes, Is.Not.Null.And.Count.EqualTo(subMeshes.Count));
+            Assert.That(mesh.SubMeshes, Is.Not.Null.And.EquivalentTo(subMeshes));
         }
     }
 }
