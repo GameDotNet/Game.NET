@@ -15,7 +15,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
-
+[assembly: InternalsVisibleTo("ObjParserNet.Core.Tests")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 // Version information for an assembly consists of the following four values:
 //
 //      Major Version

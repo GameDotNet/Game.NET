@@ -1,12 +1,12 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
 
 namespace ObjParserNet.Parser.File
 {
     public class FileLoader : IFileLoader
     {
-        public Stream LoadFile(string path)
+        public IEnumerable<string> LoadFile(string path)
         {
-            return System.IO.File.OpenRead(path);
+            return System.IO.File.ReadLines(path);
         }
     }
 }
