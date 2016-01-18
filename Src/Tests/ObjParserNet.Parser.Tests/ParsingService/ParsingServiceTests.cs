@@ -26,10 +26,10 @@ namespace ObjParserNet.Parser.Tests.ParsingServiceTests
             }
         }
 
-        [Test]
-        public void ReturnWhenLineIsEmpty()
+        [TestCase("")]
+        [TestCase("#")]
+        public void ReturnWhenLineIsEmpty(string line)
         {
-            string line = string.Empty;
             Mesh mesh = new Mesh();
 
             ParsingService service = new ParsingService();
