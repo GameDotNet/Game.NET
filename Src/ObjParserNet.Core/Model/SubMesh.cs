@@ -1,13 +1,20 @@
 using System.Collections.Generic;
-using ObjParserNet.Core.Model;
 
 namespace ObjParserNet.Core
 {
     public class SubMesh
     {
-        public List<Vector3D> Vertices = new List<Vector3D>();
-        public List<Vector3D> Textures = new List<Vector3D>();
-        public List<Vector3D> Normals = new List<Vector3D>();
-        public List<Face> Faces = new List<Face>();
+        public SubMesh()
+        {
+            Vertices = new List<Vector3D>();
+            Textures = new List<Vector3D>();
+            Normals = new List<Vector3D>();
+            Faces = new List<Face>();
+        }
+
+        public List<Vector3D> Vertices { get; set; }
+        public List<Vector3D> Textures { get; set; }
+        public List<Vector3D> Normals  {get ;set;}
+        public List<Face> Faces { get; set; }
     }
 }

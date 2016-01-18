@@ -1,13 +1,12 @@
 ﻿using NUnit.Framework;
-using NUnit.Framework.Internal;
 using Ploeh.AutoFixture;
 
 namespace ObjParserNet.Core.Tests.Model
 {
     [TestFixture]
-    class VectorTests
+    public class VectorTests
     {
-        private Fixture _fixture = new Fixture();
+        private readonly Fixture _fixture = new Fixture();
 
         [Test]
         public void CanAssignValueByContructorTest()
