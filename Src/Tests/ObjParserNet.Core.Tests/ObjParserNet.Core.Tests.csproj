@@ -58,6 +58,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="FixtureExtensions.cs" />
     <Compile Include="Model\FaceTests.cs" />
     <Compile Include="Model\FaceItemTests.cs" />
     <Compile Include="Model\MeshTests.cs" />

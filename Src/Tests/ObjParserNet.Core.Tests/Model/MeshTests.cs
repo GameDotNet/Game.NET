@@ -8,11 +8,10 @@ namespace ObjParserNet.Core.Tests.Model
     [TestFixture]
     public class MeshTests
     {
-        void setup()
+        [SetUp]
+        public void Setup()
         {
-            _fixture.Customize<Vector3>(composer => composer
-                .Without(v => v.Xy)
-                .Without(v => v.Xy));
+            _fixture.OmitVector3Properties();
         }
 
         private readonly Fixture _fixture = new Fixture();
