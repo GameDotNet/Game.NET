@@ -2,11 +2,14 @@
 {
     public class Vector3D : Vector2D
     {
-        public Vector3D(float x, float y, float z)
+        public Vector3D(float value) : base(value)
         {
-            X = x;
-            Y = y;
-            Z = z;
+            Z = value;
+        }
+
+        public Vector3D(float xValue, float yValue, float zValue) : base(xValue, yValue)
+        {
+            Z = zValue;
         }
 
         public float Z { get; set; }

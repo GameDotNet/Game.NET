@@ -14,8 +14,8 @@ namespace ObjParserNet.Core
 
         public Mesh()
         {
-            MinVertex = new Vector3D(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
-            MaxVertex = new Vector3D(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+            //MinVertex = new Vector3D(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+            //MaxVertex = new Vector3D(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
             SubMeshes = new List<SubMesh>();
         }
     }
