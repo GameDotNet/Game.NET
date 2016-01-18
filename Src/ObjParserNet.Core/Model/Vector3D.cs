@@ -1,4 +1,4 @@
-﻿namespace ObjParserNet.Core.Model
+﻿namespace ObjParserNet.Core
 {
     public class Vector3D : Vector2D
     {
