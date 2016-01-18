@@ -1,6 +1,4 @@
-﻿using System;
-using NUnit.Framework;
-using ObjParserNet.Core.Model;
+﻿using NUnit.Framework;
 using Ploeh.AutoFixture;
 
 namespace ObjParserNet.Core.Tests.Model

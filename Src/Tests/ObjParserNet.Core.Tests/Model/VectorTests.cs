@@ -20,6 +20,29 @@ namespace ObjParserNet.Core.Tests.Model
             Assert.That(vector.X, Is.EqualTo(value));
         }
 
+        [Test]
+        public void AreVectorsEqual()
+        {
+            float value = _fixture.Create<float>();
 
+            Vector first = new Vector(value);
+            Vector second = new Vector(value);
+            
+            Assert.That(ReferenceEquals(first, second), Is.False);
+            Assert.That(first, Is.EqualTo(second));
+        }
+
+        [Test]
+        public void IsVectorCopyable()
+        {
+            float value = _fixture.Create<float>();
+
+            Vector vector = new Vector(value);
+            Vector copy = vector.Copy();
+
+            Assert.That(vector, Is.Not.EqualTo(default(Vector)));
+            Assert.That(ReferenceEquals(vector, copy), Is.False);
+            Assert.That(vector, Is.EqualTo(copy));
+        }
     }
 }

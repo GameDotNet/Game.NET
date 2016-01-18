@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="Model\Face.cs" />
     <Compile Include="Model\FaceItem.cs" />
+    <Compile Include="Model\ICopyable.cs" />
     <Compile Include="Model\Mesh.cs" />
     <Compile Include="Model\Resource.cs" />
     <Compile Include="Model\SubMesh.cs" />
