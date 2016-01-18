@@ -42,6 +42,7 @@
     <Compile Include="File\IFileLoader.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Parsing\IParsingService.cs" />
+    <Compile Include="Parsing\ParsingWorker.cs" />
     <Compile Include="Parsing\ParsingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

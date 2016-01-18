@@ -63,6 +63,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ParserTests.cs" />
+    <Compile Include="ParsingService\ParsingServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
