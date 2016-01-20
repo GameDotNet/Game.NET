@@ -8,7 +8,7 @@ using ObjParserNet.Core;
 namespace ObjParserNet.AcceptanceTests
 {
     [TestFixture]
-    public class ParserTests
+    public class ObjFileParserAcceptanceParserTests
     {
         public static string AssemblyDirectory
         {
@@ -27,7 +27,7 @@ namespace ObjParserNet.AcceptanceTests
             string fileName = "box.obj";
             string path = $"{AssemblyDirectory}\\FakeData\\{fileName}";
 
-            Parser.Parser p = new Parser.Parser();
+            Parser.ObjFileParser p = new Parser.ObjFileParser();
             Mesh mesh = p.LoadMesh(path);
 
             Assert.That(mesh, Is.Not.Null);

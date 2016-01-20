@@ -6,18 +6,18 @@ using ObjParserNet.Parser.Parsing;
 
 namespace ObjParserNet.Parser
 {
-    public class Parser
+    public class ObjFileParser
     {
         private readonly IFileLoader _fileLoader;
         private readonly IParsingService _parsingService;
 
-        public Parser()
+        public ObjFileParser()
         {
             _fileLoader = new FileLoader();
             _parsingService = new ParsingService();
         }
 
-        internal Parser(IFileLoader fileLoader, IParsingService parsingService)
+        internal ObjFileParser(IFileLoader fileLoader, IParsingService parsingService)
         {
             _fileLoader = fileLoader;
             _parsingService = parsingService;
