@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjParserNet.Core.Tests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjParserNet.Parser.Tests", "Src\Tests\ObjParserNet.Parser.Tests\ObjParserNet.Parser.Tests.csproj", "{7630B4B1-92F8-4CAD-866B-8F0B77EDCC0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjParserNet.AcceptanceTests", "Src\Tests\ObjParserNet.AcceptanceTests\ObjParserNet.AcceptanceTests.csproj", "{88D0077F-DE89-4B69-BC34-0FBA700253CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{7630B4B1-92F8-4CAD-866B-8F0B77EDCC0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7630B4B1-92F8-4CAD-866B-8F0B77EDCC0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7630B4B1-92F8-4CAD-866B-8F0B77EDCC0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88D0077F-DE89-4B69-BC34-0FBA700253CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88D0077F-DE89-4B69-BC34-0FBA700253CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88D0077F-DE89-4B69-BC34-0FBA700253CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88D0077F-DE89-4B69-BC34-0FBA700253CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,5 +48,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1A2A4114-F352-440F-9F98-71A776C04B4C} = {C5ED213A-7098-48C2-AB02-C942F7E5E942}
 		{7630B4B1-92F8-4CAD-866B-8F0B77EDCC0B} = {C5ED213A-7098-48C2-AB02-C942F7E5E942}
+		{88D0077F-DE89-4B69-BC34-0FBA700253CA} = {C5ED213A-7098-48C2-AB02-C942F7E5E942}
 	EndGlobalSection
 EndGlobal
