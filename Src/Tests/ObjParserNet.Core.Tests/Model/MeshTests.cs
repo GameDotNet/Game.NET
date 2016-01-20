@@ -16,11 +16,13 @@ namespace ObjParserNet.Core.Tests.Model
 
         private readonly Fixture _fixture = new Fixture();
 
-        [Test]
-        public void CanInitializePropertiesByConstructor()
+        [TestCase(null)]
+        [TestCase("sample.obj")]
+        public void CanInitializePropertiesByConstructor(string fileName)
         {
-            Mesh mesh = new Mesh();
+            Mesh mesh = new Mesh(fileName);
 
+            Assert.That(mesh.Filename, Is.EqualTo(fileName));
             Assert.That(mesh.SubMeshes, Is.Not.Null.And.Empty);
         }
 

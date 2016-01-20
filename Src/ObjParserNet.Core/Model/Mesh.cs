@@ -11,8 +11,9 @@ namespace ObjParserNet.Core
 
         public List<SubMesh> SubMeshes { get; set; }
 
-        public Mesh()
+        public Mesh(string fileName = null)
         {
+            Filename = fileName;
             MinVertex = new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
             MaxVertex = new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
             SubMeshes = new List<SubMesh>();
@@ -21,6 +22,8 @@ namespace ObjParserNet.Core
         public Mesh(string filename, List<SubMesh> subMeshes)
         {
             Filename = filename;
+            MinVertex = new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+            MaxVertex = new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
             SubMeshes = subMeshes;
         }
     }

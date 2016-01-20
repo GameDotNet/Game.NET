@@ -18,7 +18,10 @@ namespace ObjParserNet.Parser.Parsing
                 ["v"] = _worker.ProcessVertex,
                 ["vt"] = _worker.ProcessTextCoord,
                 ["vn"] = _worker.ProcessNormal,
-                ["f"] = _worker.ProcessFace
+                ["f"] = _worker.ProcessFace,
+                ["mtllib"] = (process, mesh) => { },
+                ["usemtl"] = (process, mesh) => { },
+                ["s"] = (process, mesh) => { }
             };
         }
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using ObjParserNet.Core;
 using ObjParserNet.Parser.File;
 using ObjParserNet.Parser.Parsing;
@@ -24,7 +25,8 @@ namespace ObjParserNet.Parser
 
         public Mesh LoadMesh(string path)
         {
-            var mesh = new Mesh();
+            string fileName = Path.GetFileName(path);
+            var mesh = new Mesh(fileName);
 
             IEnumerable<string> lines = _fileLoader.LoadFile(path);
 
