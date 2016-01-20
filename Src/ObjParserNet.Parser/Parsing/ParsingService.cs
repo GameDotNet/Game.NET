@@ -34,7 +34,7 @@ namespace ObjParserNet.Parser.Parsing
             }
             else
             {
-                throw new InvalidOperationException($"Cannot find a correct process for line {line}");
+                throw new InvalidOperationException($"Cannot find a correct parsing process for line {line}");
             }
         }
     }
