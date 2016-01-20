@@ -12,7 +12,7 @@ namespace ObjParserNet.Parser.Tests.ParsingServiceTests
     {
         private readonly Fixture _fixture = new Fixture();
 
-        private readonly ICollection<string> _processIds = new List<string> {"o", "v", "vt", "vn", "f"};
+        private readonly ICollection<string> _processIds = new List<string> { "o", "v", "vt", "vn", "f", "mtllib", "usemtl", "s" };
 
         [Test]
         public void CanInitializeProcessDictionary()
@@ -34,7 +34,7 @@ namespace ObjParserNet.Parser.Tests.ParsingServiceTests
 
             ParsingService service = new ParsingService();
             service.ProcessLine(line, mesh);
-            
+
             Mesh emptyMesh = new Mesh();
             Assert.That(mesh.MinVertex, Is.EqualTo(emptyMesh.MinVertex));
             Assert.That(mesh.MaxVertex, Is.EqualTo(emptyMesh.MaxVertex));

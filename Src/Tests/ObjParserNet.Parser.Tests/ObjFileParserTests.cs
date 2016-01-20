@@ -22,9 +22,10 @@ namespace ObjParserNet.Parser.Tests
             service.ProcessLine(Arg.Any<string>(), Arg.Any<Mesh>());
             
             ObjFileParser objFileParser = new ObjFileParser(loader, service);
-            Mesh mesh = objFileParser.LoadMesh(_fixture.Create<string>());
+            string fileName = _fixture.Create<string>();
+            Mesh mesh = objFileParser.LoadMesh(fileName);
             
-            Assert.That(mesh.Filename, Is.Null);
+            Assert.That(mesh.Filename, Is.EqualTo(fileName));
             Assert.That(mesh.SubMeshes, Is.Empty);
             Assert.That(mesh.Name, Is.Null);
 
