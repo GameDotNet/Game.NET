@@ -24,7 +24,7 @@ namespace ObjParserNet.AcceptanceTests
         [Test]
         public void CanLoadSampleObject()
         {
-            string fileName = "box.obj";
+            string fileName = "box.obj.txt";
             string path = $"{AssemblyDirectory}\\FakeData\\{fileName}";
 
             Parser.ObjFileParser p = new Parser.ObjFileParser();
