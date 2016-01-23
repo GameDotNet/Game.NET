@@ -7,7 +7,7 @@
     <authors>Jakub Bentkowski, Lukasz Pyrzyk</authors>
     <owners>Jakub Bentkowski, Lukasz Pyrzyk</owners>
     <licenseUrl>https://github.com/MrJaqbq/ObjParserNet/blob/master/License.txt</licenseUrl>
-    <projectUrl>https://github.com/MrJaqbq/ObjParserNet//projectUrl></projectUrl>
+    <projectUrl>https://github.com/MrJaqbq/ObjParserNet/projectUrl</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>OpenGL project for Computer Graphics on Opole University of Technology</description>
     <copyright>Copyright 2016</copyright>
