@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Game.NET.Parser</RootNamespace>
     <AssemblyName>Game.NET.Parser</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Game.NET, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Game.NET.1.0.1\lib\net46\Game.NET.dll</HintPath>
+      <HintPath>..\..\packages\Game.NET.1.0.2\lib\net45\Game.NET.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
