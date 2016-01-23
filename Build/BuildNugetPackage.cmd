@@ -1,2 +1,2 @@
-nuget pack ..\Src\ObjParserNet.Core\ObjParserNet.Core.csproj -OutputDirectory .\
-nuget pack ..\Src\ObjParserNet.Parser\ObjParserNet.Parser.csproj -OutputDirectory .\
+nuget pack ..\Src\Game.NET\Game.NET.csproj -OutputDirectory .\
+nuget pack ..\Src\Game.NET.Parser\Game.NET.Parser.csproj -OutputDirectory .\
