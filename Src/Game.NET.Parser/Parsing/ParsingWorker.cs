@@ -1,7 +1,6 @@
 ﻿using System.Globalization;
 using System.Linq;
-using Game.NET;
-using OpenTK;
+using System.Numerics;
 
 namespace Game.NET.Parser.Parsing
 {

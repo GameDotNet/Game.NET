@@ -69,6 +69,7 @@
     <Compile Include="Model\MeshTests.cs" />
     <Compile Include="Model\ShaderFileInfo.cs" />
     <Compile Include="Model\SubMeshTests.cs" />
+    <Compile Include="OpenTKExtensions\VectorExtensionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
