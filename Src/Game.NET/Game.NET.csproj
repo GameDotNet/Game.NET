@@ -43,6 +43,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Numerics.Vectors.4.1.1-beta-23516\lib\portable-net45+win8\System.Numerics.Vectors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -59,6 +63,7 @@
     <Compile Include="Model\ShaderFileInfo.cs" />
     <Compile Include="Model\ShaderProgram.cs" />
     <Compile Include="Model\SubMesh.cs" />
+    <Compile Include="OpenTKExtensions\VectorExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceManager.cs" />
   </ItemGroup>
