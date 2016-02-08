@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Numerics;
 using Game.NET.Parser.Parsing;
 using NUnit.Framework;
@@ -92,6 +93,85 @@ namespace Game.NET.Parser.Tests.Parsing
             Assert.That(mesh.MaxVertex.X, Is.EqualTo(x));
             Assert.That(mesh.MaxVertex.Y, Is.EqualTo(y));
             Assert.That(mesh.MaxVertex.Z, Is.EqualTo(z));
+        }
+
+        [Test]
+        public void ProcessTextCoord_ThrowsWhenSubmeshCollecionIsEmpty()
+        {
+            Mesh mesh = new Mesh();
+            ParsingWorker worker = new ParsingWorker();
+            
+            Assert.That(() => worker.ProcessTextCoord(string.Empty, mesh), Throws.InvalidOperationException);
+        }
+
+        [TestCase("n .")]
+        [TestCase("n . . .")]
+        public void ProcessTextCoord_ShouldReturnWhereThereIsInvalidNumberOfTokens(string line)
+        {
+            Mesh mesh = new Mesh();
+            mesh.SubMeshes.Add(new SubMesh());
+            ParsingWorker worker = new ParsingWorker();
+            worker.ProcessTextCoord(line, mesh);
+
+            Assert.That(mesh.SubMeshes.Last().Textures, Is.Empty);
+        }
+
+        [Test]
+        public void ProcessTextCoord_ShouldAddTextureToTheLastSubmesh()
+        {
+            Mesh mesh = new Mesh();
+            mesh.SubMeshes.Add(new SubMesh());
+            mesh.SubMeshes.Add(new SubMesh());
+
+            float x = 1.000000f;
+            float y = 1.000000f;
+            string line = $"t {x} {y}";
+            ParsingWorker worker = new ParsingWorker();
+            worker.ProcessTextCoord(line, mesh);
+
+            Vector3 lastTexture = mesh.SubMeshes.Last().Textures.First();
+            Assert.That(lastTexture.X, Is.EqualTo(x));
+            Assert.That(lastTexture.Y, Is.EqualTo(y));
+        }
+
+        [Test]
+        public void ProcessNormal_ThrowsWhenSubmeshCollecionIsEmpty()
+        {
+            Mesh mesh = new Mesh();
+            ParsingWorker worker = new ParsingWorker();
+
+            Assert.That(() => worker.ProcessNormal(string.Empty, mesh), Throws.InvalidOperationException);
+        }
+
+        [TestCase("n . .")]
+        [TestCase("n . . . .")]
+        public void ProcessNormal_ShouldReturnWhereThereIsInvalidNumberOfTokens(string line)
+        {
+            Mesh mesh = new Mesh();
+            mesh.SubMeshes.Add(new SubMesh());
+            ParsingWorker worker = new ParsingWorker();
+            worker.ProcessNormal(line, mesh);
+
+            Assert.That(mesh.SubMeshes.Last().Textures, Is.Empty);
+        }
+
+        [Test]
+        public void ProcessNormal_ShouldAddTextureToTheLastSubmesh()
+        {
+            Mesh mesh = new Mesh();
+            mesh.SubMeshes.Add(new SubMesh());
+            mesh.SubMeshes.Add(new SubMesh());
+
+            float x = 1.000000f;
+            float y = 1.000000f;
+            float z = 1.000000f;
+            string line = $"v {x} {y} {z}";
+            ParsingWorker worker = new ParsingWorker();
+            worker.ProcessNormal(line, mesh);
+
+            Vector3 lastTexture = mesh.SubMeshes.Last().Normals.First();
+            Assert.That(lastTexture.X, Is.EqualTo(x));
+            Assert.That(lastTexture.Y, Is.EqualTo(y));
         }
     }
 }
