@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using NUnit.Framework;
 using Game.NET.Parser.Parsing;
+using NUnit.Framework;
 using Ploeh.AutoFixture;
 
-namespace Game.NET.Parser.Tests.ParsingServiceTests
+namespace Game.NET.Parser.Tests.Parsing
 {
     [TestFixture]
     public class ParsingServiceTests
