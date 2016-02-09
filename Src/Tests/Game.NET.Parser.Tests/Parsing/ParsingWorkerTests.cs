@@ -173,5 +173,116 @@ namespace Game.NET.Parser.Tests.Parsing
             Assert.That(lastTexture.X, Is.EqualTo(x));
             Assert.That(lastTexture.Y, Is.EqualTo(y));
         }
+
+        [Test]
+        public void ProcessFace_ThrowsWhenSubmeshCollecionIsEmpty()
+        {
+            Mesh mesh = new Mesh();
+            ParsingWorker worker = new ParsingWorker();
+
+            Assert.That(() => worker.ProcessFace(string.Empty, mesh), Throws.InvalidOperationException);
+        }
+
+        [Test]
+        public void ProcessFace_ShouldAddFaceWithOneFaceItemWithVertex()
+        {
+            Mesh mesh = new Mesh();
+            mesh.SubMeshes.Add(new SubMesh());
+            ParsingWorker worker = new ParsingWorker();
+
+            uint value = 3;
+            string line = $"f {value}";
+            worker.ProcessFace(line, mesh);
+
+            Assert.That(mesh.SubMeshes.Last().Faces.First().Items.Count, Is.EqualTo(1));
+            FaceItem faceItem = mesh.SubMeshes.Last().Faces.First().Items.First();
+            Assert.That(faceItem.Vertex, Is.EqualTo(value));
+        }
+
+        [Test]
+        public void ProcessFace_ShouldAddFaceItemWithoutVertex()
+        {
+            Mesh mesh = new Mesh();
+            mesh.SubMeshes.Add(new SubMesh());
+            ParsingWorker worker = new ParsingWorker();
+
+            string line = "f ";
+            worker.ProcessFace(line, mesh);
+
+            Assert.That(mesh.SubMeshes.Last().Faces.First().Items.Count, Is.EqualTo(1));
+            FaceItem faceItem = mesh.SubMeshes.Last().Faces.First().Items.First();
+            Assert.That(faceItem.Vertex, Is.EqualTo(default(uint)));
+        }
+
+        [Test]
+        public void ProcessFace_ShouldAddFaceWithOneFaceItemWithVertexAndTexture()
+        {
+            Mesh mesh = new Mesh();
+            mesh.SubMeshes.Add(new SubMesh());
+            ParsingWorker worker = new ParsingWorker();
+
+            uint x = 3;
+            uint y = 4;
+            string line = $"f {x}/{y}";
+            worker.ProcessFace(line, mesh);
+
+            Assert.That(mesh.SubMeshes.Last().Faces.First().Items.Count, Is.EqualTo(1));
+            FaceItem faceItem = mesh.SubMeshes.Last().Faces.First().Items.First();
+            Assert.That(faceItem.Vertex, Is.EqualTo(x));
+            Assert.That(faceItem.Texture, Is.EqualTo(y));
+        }
+
+        [Test]
+        public void ProcessFace_ShouldAddFaceItemWithoutVertexValueAndTexture()
+        {
+            Mesh mesh = new Mesh();
+            mesh.SubMeshes.Add(new SubMesh());
+            ParsingWorker worker = new ParsingWorker();
+
+            string line = "f /";
+            worker.ProcessFace(line, mesh);
+
+            Assert.That(mesh.SubMeshes.Last().Faces.First().Items.Count, Is.EqualTo(1));
+            FaceItem faceItem = mesh.SubMeshes.Last().Faces.First().Items.First();
+            Assert.That(faceItem.Vertex, Is.EqualTo(default(uint)));
+            Assert.That(faceItem.Texture, Is.EqualTo(default(uint)));
+        }
+
+        [Test]
+        public void ProcessFace_ShouldAddFaceWithOneFaceItemWithVertexTextureAndNormal()
+        {
+            Mesh mesh = new Mesh();
+            mesh.SubMeshes.Add(new SubMesh());
+            ParsingWorker worker = new ParsingWorker();
+
+            uint x = 3;
+            uint y = 4;
+            uint z = 5;
+            string line = $"f {x}/{y}/{z}";
+            worker.ProcessFace(line, mesh);
+
+            Assert.That(mesh.SubMeshes.Last().Faces.First().Items.Count, Is.EqualTo(1));
+            FaceItem faceItem = mesh.SubMeshes.Last().Faces.First().Items.First();
+            Assert.That(faceItem.Vertex, Is.EqualTo(x));
+            Assert.That(faceItem.Texture, Is.EqualTo(y));
+            Assert.That(faceItem.Normal, Is.EqualTo(z));
+        }
+
+        [Test]
+        public void ProcessFace_ShouldAddFaceItemWithoutVertexTextureAndNormal()
+        {
+            Mesh mesh = new Mesh();
+            mesh.SubMeshes.Add(new SubMesh());
+            ParsingWorker worker = new ParsingWorker();
+
+            string line = "f //";
+            worker.ProcessFace(line, mesh);
+
+            Assert.That(mesh.SubMeshes.Last().Faces.First().Items.Count, Is.EqualTo(1));
+            FaceItem faceItem = mesh.SubMeshes.Last().Faces.First().Items.First();
+            Assert.That(faceItem.Vertex, Is.EqualTo(default(uint)));
+            Assert.That(faceItem.Texture, Is.EqualTo(default(uint)));
+            Assert.That(faceItem.Normal, Is.EqualTo(default(uint)));
+        }
     }
 }

@@ -77,6 +77,8 @@ namespace Game.NET.Parser.Parsing
 
         public void ProcessFace(string line, Mesh mesh)
         {
+            if (!mesh.SubMeshes.Any()) throw new InvalidOperationException("Cannot add face because submesh collection is empty");
+
             var tokens = line.Remove(0, 2).Split(' ');
 
             Face face = new Face();
