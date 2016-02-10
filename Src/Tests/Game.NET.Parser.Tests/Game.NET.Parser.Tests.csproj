@@ -68,7 +68,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ObjFileParserTests.cs" />
-    <Compile Include="ParsingService\ParsingServiceTests.cs" />
+    <Compile Include="Parsing\ParsingServiceTests.cs" />
+    <Compile Include="Parsing\ParsingWorkerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

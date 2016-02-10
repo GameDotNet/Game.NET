@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
 
@@ -43,6 +44,8 @@ namespace Game.NET.Parser.Parsing
 
         public void ProcessTextCoord(string line, Mesh mesh)
         {
+            if(!mesh.SubMeshes.Any()) throw new InvalidOperationException("Cannot add texture because submesh collection is empty");
+
             var tokens = line.Split(' ');
             if (tokens.Length != 3) return;
 
@@ -57,6 +60,8 @@ namespace Game.NET.Parser.Parsing
 
         public void ProcessNormal(string line, Mesh mesh)
         {
+            if (!mesh.SubMeshes.Any()) throw new InvalidOperationException("Cannot add normal because submesh collection is empty");
+
             var tokens = line.Split(' ');
             if (tokens.Length != 4) return;
 
@@ -72,6 +77,8 @@ namespace Game.NET.Parser.Parsing
 
         public void ProcessFace(string line, Mesh mesh)
         {
+            if (!mesh.SubMeshes.Any()) throw new InvalidOperationException("Cannot add face because submesh collection is empty");
+
             var tokens = line.Remove(0, 2).Split(' ');
 
             Face face = new Face();
