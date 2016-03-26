@@ -14,7 +14,7 @@ namespace Game.NET.Parser.Tests.Parsing
         {
             Mesh mesh = new Mesh();
             int baseSubmeshCount = mesh.SubMeshes.Count;
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
             worker.ProcessObject(string.Empty, mesh);
 
             Assert.That(mesh.SubMeshes.Count, Is.EqualTo(baseSubmeshCount + 1));
@@ -24,7 +24,7 @@ namespace Game.NET.Parser.Tests.Parsing
         public void ProcessVertex_ShouldAddSubmeshIfCollectionIsEmpty()
         {
             Mesh mesh = new Mesh();
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
             int baseSubmeshCount = mesh.SubMeshes.Count;
             worker.ProcessVertex(string.Empty, mesh);
 
@@ -35,7 +35,7 @@ namespace Game.NET.Parser.Tests.Parsing
         public void ProcessVertex_ShouldAddVector3ToTheLastSubmeshAndAssingMinVertex()
         {
             Mesh mesh = new Mesh();
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
             int baseSubmeshCount = mesh.SubMeshes.Count;
 
             float x = 1.000000f;
@@ -66,7 +66,7 @@ namespace Game.NET.Parser.Tests.Parsing
         public void ProcessVertex_ShouldApplyNewValuesOfMaxAndMinVertex()
         {
             Mesh mesh = new Mesh();
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
 
             float x = 1.000000f;
             float y = 1.000000f;
@@ -99,7 +99,7 @@ namespace Game.NET.Parser.Tests.Parsing
         public void ProcessTextCoord_ThrowsWhenSubmeshCollecionIsEmpty()
         {
             Mesh mesh = new Mesh();
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
             
             Assert.That(() => worker.ProcessTextCoord(string.Empty, mesh), Throws.InvalidOperationException);
         }
@@ -110,7 +110,7 @@ namespace Game.NET.Parser.Tests.Parsing
         {
             Mesh mesh = new Mesh();
             mesh.SubMeshes.Add(new SubMesh());
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
             worker.ProcessTextCoord(line, mesh);
 
             Assert.That(mesh.SubMeshes.Last().Textures, Is.Empty);
@@ -126,7 +126,7 @@ namespace Game.NET.Parser.Tests.Parsing
             float x = 1.000000f;
             float y = 1.000000f;
             string line = $"t {x} {y}";
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
             worker.ProcessTextCoord(line, mesh);
 
             Vector3 lastTexture = mesh.SubMeshes.Last().Textures.First();
@@ -138,7 +138,7 @@ namespace Game.NET.Parser.Tests.Parsing
         public void ProcessNormal_ThrowsWhenSubmeshCollecionIsEmpty()
         {
             Mesh mesh = new Mesh();
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
 
             Assert.That(() => worker.ProcessNormal(string.Empty, mesh), Throws.InvalidOperationException);
         }
@@ -149,7 +149,7 @@ namespace Game.NET.Parser.Tests.Parsing
         {
             Mesh mesh = new Mesh();
             mesh.SubMeshes.Add(new SubMesh());
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
             worker.ProcessNormal(line, mesh);
 
             Assert.That(mesh.SubMeshes.Last().Textures, Is.Empty);
@@ -166,7 +166,7 @@ namespace Game.NET.Parser.Tests.Parsing
             float y = 1.000000f;
             float z = 1.000000f;
             string line = $"v {x} {y} {z}";
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
             worker.ProcessNormal(line, mesh);
 
             Vector3 lastTexture = mesh.SubMeshes.Last().Normals.First();
@@ -178,7 +178,7 @@ namespace Game.NET.Parser.Tests.Parsing
         public void ProcessFace_ThrowsWhenSubmeshCollecionIsEmpty()
         {
             Mesh mesh = new Mesh();
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
 
             Assert.That(() => worker.ProcessFace(string.Empty, mesh), Throws.InvalidOperationException);
         }
@@ -188,7 +188,7 @@ namespace Game.NET.Parser.Tests.Parsing
         {
             Mesh mesh = new Mesh();
             mesh.SubMeshes.Add(new SubMesh());
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
 
             uint value = 3;
             string line = $"f {value}";
@@ -204,7 +204,7 @@ namespace Game.NET.Parser.Tests.Parsing
         {
             Mesh mesh = new Mesh();
             mesh.SubMeshes.Add(new SubMesh());
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
 
             string line = "f ";
             worker.ProcessFace(line, mesh);
@@ -219,7 +219,7 @@ namespace Game.NET.Parser.Tests.Parsing
         {
             Mesh mesh = new Mesh();
             mesh.SubMeshes.Add(new SubMesh());
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
 
             uint x = 3;
             uint y = 4;
@@ -237,7 +237,7 @@ namespace Game.NET.Parser.Tests.Parsing
         {
             Mesh mesh = new Mesh();
             mesh.SubMeshes.Add(new SubMesh());
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
 
             string line = "f /";
             worker.ProcessFace(line, mesh);
@@ -253,7 +253,7 @@ namespace Game.NET.Parser.Tests.Parsing
         {
             Mesh mesh = new Mesh();
             mesh.SubMeshes.Add(new SubMesh());
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
 
             uint x = 3;
             uint y = 4;
@@ -273,7 +273,7 @@ namespace Game.NET.Parser.Tests.Parsing
         {
             Mesh mesh = new Mesh();
             mesh.SubMeshes.Add(new SubMesh());
-            ParsingWorker worker = new ParsingWorker();
+            ObjParsingWorker worker = new ObjParsingWorker();
 
             string line = "f //";
             worker.ProcessFace(line, mesh);

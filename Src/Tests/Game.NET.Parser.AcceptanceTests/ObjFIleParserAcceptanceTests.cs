@@ -15,9 +15,7 @@ namespace Game.NET.AcceptanceTests
             get
             {
                 string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-                UriBuilder uri = new UriBuilder(codeBase);
-                string path = Uri.UnescapeDataString(uri.Path);
-                return Path.GetDirectoryName(path);
+                return Path.GetDirectoryName(codeBase.Substring(8));
             }
         }
 
@@ -27,7 +25,7 @@ namespace Game.NET.AcceptanceTests
             string fileName = "box.obj.txt";
             string path = $"{AssemblyDirectory}\\FakeData\\{fileName}";
 
-            Parser.ObjFileParser p = new Parser.ObjFileParser();
+            Parser.FileParser p = new Parser.FileParser(new Parser.File.FileLoader(), new Parser.Parsing.ObjParsingService());
             Mesh mesh = p.LoadMesh(path);
 
             Assert.That(mesh, Is.Not.Null);

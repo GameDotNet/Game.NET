@@ -5,12 +5,12 @@ using Game.NET;
 
 namespace Game.NET.Parser.Parsing
 {
-    internal class ParsingService : IParsingService
+    public class ObjParsingService : IParsingService
     {
-        private readonly ParsingWorker _worker = new ParsingWorker();
-        public readonly IDictionary<string, Action<string, Mesh>> ProcessDictionary;
+        private readonly ObjParsingWorker _worker = new ObjParsingWorker();
+        internal readonly IDictionary<string, Action<string, Mesh>> ProcessDictionary;
 
-        public ParsingService()
+        public ObjParsingService()
         {
             ProcessDictionary = new Dictionary<string, Action<string, Mesh>>
             {

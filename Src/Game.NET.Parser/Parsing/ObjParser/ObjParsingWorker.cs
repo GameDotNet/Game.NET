@@ -5,10 +5,10 @@ using System.Numerics;
 
 namespace Game.NET.Parser.Parsing
 {
-    internal class ParsingWorker
+    internal class ObjParsingWorker
     {
-        public NumberStyles Style { get; } = NumberStyles.Any;
-        public CultureInfo Info { get; } = CultureInfo.InvariantCulture;
+        internal NumberStyles Style { get; } = NumberStyles.Any;
+        internal CultureInfo Info { get; } = CultureInfo.InvariantCulture;
 
         public void ProcessObject(string line, Mesh mesh)
         {

@@ -2,7 +2,7 @@
 
 namespace Game.NET.Parser.File
 {
-    internal interface IFileLoader
+    public interface IFileLoader
     {
         IEnumerable<string> LoadFile(string path);
     }

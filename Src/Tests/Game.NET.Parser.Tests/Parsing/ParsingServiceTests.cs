@@ -16,7 +16,7 @@ namespace Game.NET.Parser.Tests.Parsing
         [Test]
         public void CanInitializeProcessDictionary()
         {
-            ParsingService service = new ParsingService();
+            ObjParsingService service = new ObjParsingService();
 
             foreach (KeyValuePair<string, Action<string, Mesh>> pair in service.ProcessDictionary)
             {
@@ -31,7 +31,7 @@ namespace Game.NET.Parser.Tests.Parsing
         {
             Mesh mesh = new Mesh();
 
-            ParsingService service = new ParsingService();
+            ObjParsingService service = new ObjParsingService();
             service.ProcessLine(line, mesh);
 
             Mesh emptyMesh = new Mesh();
@@ -47,7 +47,7 @@ namespace Game.NET.Parser.Tests.Parsing
             string unknownProcessId = _fixture.Create<string>();
             Mesh mesh = new Mesh();
 
-            ParsingService service = new ParsingService();
+            ObjParsingService service = new ObjParsingService();
 
             Assert.That(() => service.ProcessLine(unknownProcessId, mesh), Throws.InvalidOperationException);
         }
