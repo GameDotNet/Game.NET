@@ -15,9 +15,7 @@ namespace Game.NET.AcceptanceTests
             get
             {
                 string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-                UriBuilder uri = new UriBuilder(codeBase);
-                string path = Uri.UnescapeDataString(uri.Path);
-                return Path.GetDirectoryName(path);
+                return Path.GetDirectoryName(codeBase.Substring(8));
             }
         }
 
