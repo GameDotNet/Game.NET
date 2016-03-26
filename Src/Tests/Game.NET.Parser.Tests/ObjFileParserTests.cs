@@ -21,9 +21,9 @@ namespace Game.NET.Parser.Tests
             IParsingService service = Substitute.For<IParsingService>();
             service.ProcessLine(Arg.Any<string>(), Arg.Any<Mesh>());
             
-            ObjFileParser objFileParser = new ObjFileParser(loader, service);
+            FileParser fileParser = new FileParser(loader, service);
             string fileName = _fixture.Create<string>();
-            Mesh mesh = objFileParser.LoadMesh(fileName);
+            Mesh mesh = fileParser.LoadMesh(fileName);
             
             Assert.That(mesh.Filename, Is.EqualTo(fileName));
             Assert.That(mesh.SubMeshes, Is.Empty);

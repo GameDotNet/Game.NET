@@ -5,18 +5,12 @@ using Game.NET.Parser.Parsing;
 
 namespace Game.NET.Parser
 {
-    public class ObjFileParser
+    public class FileParser
     {
         private readonly IFileLoader _fileLoader;
         private readonly IParsingService _parsingService;
-
-        public ObjFileParser()
-        {
-            _fileLoader = new FileLoader();
-            _parsingService = new ParsingService();
-        }
-
-        internal ObjFileParser(IFileLoader fileLoader, IParsingService parsingService)
+        
+        public FileParser(IFileLoader fileLoader, IParsingService parsingService)
         {
             _fileLoader = fileLoader;
             _parsingService = parsingService;
