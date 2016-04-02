@@ -40,10 +40,10 @@
   <ItemGroup>
     <Compile Include="File\FileLoader.cs" />
     <Compile Include="File\IFileLoader.cs" />
-    <Compile Include="ObjFileParser.cs" />
+    <Compile Include="FileParser.cs" />
     <Compile Include="Parsing\IParsingService.cs" />
-    <Compile Include="Parsing\ParsingWorker.cs" />
-    <Compile Include="Parsing\ParsingService.cs" />
+    <Compile Include="Parsing\ObjParser\ObjParsingWorker.cs" />
+    <Compile Include="Parsing\ObjParser\ObjParsingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Game.NET\Game.NET.csproj">

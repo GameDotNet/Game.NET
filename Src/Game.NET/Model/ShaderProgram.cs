@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using OpenTK.Graphics.OpenGL;
 
 namespace Game.NET
 {
-    public class ShaderProgram : Resource, IDisposable
+    public class ShaderProgram : Resource
     {
         private bool _isDisposed;
 
@@ -17,6 +18,11 @@ namespace Game.NET
 
         internal void Compile(ICollection<Shader> shaders)
         {
+            if (shaders.Any(s => !s.IsCompiled))
+            {
+                throw new ShaderNotCompiledException();
+            }
+
             foreach (var shader in shaders)
             {
                 GL.AttachShader(Handle, shader.Handle);

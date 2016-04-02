@@ -3,9 +3,11 @@ using OpenTK.Graphics.OpenGL;
 
 namespace Game.NET
 {
-    internal class Shader : Resource
+    internal partial class Shader : Resource
     {
         private bool _isDisposed;
+
+        public bool IsCompiled { get; private set; }
 
         public string Filename { get; set; }
 
@@ -45,6 +47,10 @@ namespace Game.NET
 
                 throw new ShaderCompilationErrorException(info);
             }
+            else
+            {
+                IsCompiled = true;
+            }
         }
 
         public override void Dispose()
@@ -57,7 +63,8 @@ namespace Game.NET
         {
             if (_isDisposed)
                 return;
-            
+
+            IsCompiled = false;
             GL.DeleteShader(Handle);
 
             _isDisposed = true;
