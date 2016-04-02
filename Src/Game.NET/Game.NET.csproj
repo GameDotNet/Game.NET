@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exception\ShaderCompilationErrorException.cs" />
+    <Compile Include="Exception\ShaderNotCompiledException.cs" />
     <Compile Include="Model\Face.cs" />
     <Compile Include="Model\FaceItem.cs" />
     <Compile Include="Model\ICopyable.cs" />
