@@ -11,7 +11,7 @@ namespace Game.NET
         {
             try
             {
-                List<Shader> compiledShaders = shaders.Select(shader => CreateShaderFromFile(shader.Type, shader.Name, shader.Filename)).ToList();
+                Shader[] compiledShaders = shaders.Select(shader => CreateShaderFromFile(shader.Type, shader.Name, shader.Filename)).ToArray();
 
                 ShaderProgram program = new ShaderProgram();
                 program.Compile(compiledShaders);
@@ -45,7 +45,7 @@ namespace Game.NET
 
             shader.Source = File.ReadAllText(filename);
             shader.Compile();
-            
+
             ResourceManager.Insert(name, shader);
 
             return shader;
