@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Game.NET
 {
     [Serializable]
-    public class ShaderCompilationErrorException : System.Exception
+    public class ShaderCompilationErrorException : Exception
     {
-        private static readonly string ShaderExceptionText = "Unable to load shader.";
+        private const string ShaderExceptionText = "Unable to load shader.";
 
-        public ShaderCompilationErrorException()
+        public ShaderCompilationErrorException() : this(ShaderExceptionText)
         {
         }
 
@@ -15,17 +16,9 @@ namespace Game.NET
         {
         }
 
-        public ShaderCompilationErrorException(System.Exception inner) : base(ShaderExceptionText, inner)
+        public ShaderCompilationErrorException(Exception ex) : base(ShaderExceptionText, ex)
         {
         }
 
-        public ShaderCompilationErrorException(string message, System.Exception inner) : base(message, inner)
-        {
-        }
-
-        protected ShaderCompilationErrorException(System.Runtime.Serialization.SerializationInfo info,
-            System.Runtime.Serialization.StreamingContext context)
-        {
-        }
     }
 }

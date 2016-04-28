@@ -63,6 +63,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Exceptions\ShaderCompilationErrorExceptionTests.cs" />
+    <Compile Include="Exceptions\ShaderNotCompiledExceptionTests.cs" />
     <Compile Include="FixtureExtensions.cs" />
     <Compile Include="Model\FaceTests.cs" />
     <Compile Include="Model\FaceItemTests.cs" />
