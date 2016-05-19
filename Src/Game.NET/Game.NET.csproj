@@ -55,6 +55,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exception\GameException.cs" />
     <Compile Include="Exception\ShaderCompilationErrorException.cs" />
     <Compile Include="Exception\ShaderNotCompiledException.cs" />
     <Compile Include="Model\Face.cs" />

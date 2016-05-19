@@ -3,7 +3,7 @@
 namespace Game.NET
 {
     [Serializable]
-    public class ShaderNotCompiledException : Exception
+    public class ShaderNotCompiledException : GameException
     {
         private const string ShaderExceptionText = "Unable to use not compiled shader.";
 
