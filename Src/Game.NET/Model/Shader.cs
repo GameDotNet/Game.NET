@@ -3,26 +3,27 @@ using OpenTK.Graphics.OpenGL;
 
 namespace Game.NET
 {
-    internal partial class Shader : Resource
+    internal class Shader : Resource, IDisposable
     {
-        private bool _isDisposed;
+        private bool _disposed;
 
         public bool IsCompiled { get; private set; }
-
         public string Filename { get; set; }
-
         public int Handle { get; private set; }
-        
         public string Source { get; set; }
-
         public ShaderType Type { get; private set; }
-        
+
         internal Shader(ShaderType type, string filename)
         {
             Type = type;
             Filename = filename;
 
             Handle = GL.CreateShader(Type);
+        }
+
+        ~Shader()
+        {
+            Dispose(false);
         }
 
         public void Compile()
@@ -43,36 +44,31 @@ namespace Game.NET
             {
                 string info = GL.GetShaderInfoLog(Handle);
 
-                CleanUp();
+                Dispose();
 
                 throw new ShaderCompilationErrorException(info);
             }
-            else
-            {
-                IsCompiled = true;
-            }
+
+            IsCompiled = true;
         }
 
-        public override void Dispose()
+        public void Dispose()
         {
-            CleanUp();
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        private void CleanUp()
+        protected virtual void Dispose(bool disposing)
         {
-            if (_isDisposed)
-                return;
+            if (_disposed) return;
 
-            IsCompiled = false;
-            GL.DeleteShader(Handle);
+            if (disposing)
+            {
+                GL.DeleteShader(Handle);
+                IsCompiled = false;
+            }
 
-            _isDisposed = true;
-        }
-
-        ~Shader()
-        {
-            CleanUp();
+            _disposed = true;
         }
     }
 }
