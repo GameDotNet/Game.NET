@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Numerics;
 
-namespace Game.NET.Parsing.Obj
+namespace Game.NET.Parsing.ObjectFile
 {
     internal class ObjParsingWorker
     {

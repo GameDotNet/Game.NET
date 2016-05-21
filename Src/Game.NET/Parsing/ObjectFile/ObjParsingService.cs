@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Game.NET.Parsing.Obj
+namespace Game.NET.Parsing.ObjectFile
 {
     internal class ObjParsingService : IParsingService
     {
