@@ -57,11 +57,8 @@ namespace Game.NET
             if (_isDisposed)
                 return;
 
-            if (disposing)
-            {
-                GL.DeleteProgram(Handle);
-                Handle = -1;
-            }
+            GL.DeleteProgram(Handle);
+            Handle = -1;
 
             _isDisposed = true;
         }

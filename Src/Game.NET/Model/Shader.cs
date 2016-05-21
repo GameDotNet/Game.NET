@@ -62,10 +62,14 @@ namespace Game.NET
         {
             if (_disposed) return;
 
+            GL.DeleteShader(Handle);
+            Handle = -1;
+            IsCompiled = false;
+
             if (disposing)
             {
-                GL.DeleteShader(Handle);
-                IsCompiled = false;
+                Source = null;
+                Filename = null;
             }
 
             _disposed = true;
