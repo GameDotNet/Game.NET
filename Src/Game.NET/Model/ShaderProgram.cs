@@ -5,7 +5,7 @@ using OpenTK.Graphics.OpenGL;
 
 namespace Game.NET
 {
-    public class ShaderProgram : Resource
+    public class ShaderProgram : Resource, IDisposable
     {
         private bool _isDisposed;
 
@@ -14,6 +14,11 @@ namespace Game.NET
         public ShaderProgram()
         {
             Handle = GL.CreateProgram();
+        }
+
+        ~ShaderProgram()
+        {
+            Dispose(false);
         }
 
         internal void Compile(ICollection<Shader> shaders)
@@ -41,26 +46,21 @@ namespace Game.NET
             GL.UseProgram(Handle);
         }
 
-        public override void Dispose()
+        public void Dispose()
         {
-            CleanUp();
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        private void CleanUp()
+        protected virtual void Dispose(bool disposing)
         {
             if (_isDisposed)
                 return;
-            
+
             GL.DeleteProgram(Handle);
             Handle = -1;
-        
-            _isDisposed = true;
-        }
 
-        ~ShaderProgram()
-        {
-            CleanUp();
+            _isDisposed = true;
         }
     }
 }

@@ -1,10 +1,7 @@
-﻿using System;
-
-namespace Game.NET
+﻿namespace Game.NET
 {
-    public abstract class Resource : IDisposable
+    public abstract class Resource
     {
         public string Name { get; internal set; }
-        public virtual void Dispose() { }
     }
 }
