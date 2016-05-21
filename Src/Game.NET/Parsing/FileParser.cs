@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using Game.NET.Parsing.IO;
-using Game.NET.Parsing.ObjectFile;
+using Game.NET.Parsing.Obj;
 
 namespace Game.NET.Parsing
 {
