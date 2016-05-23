@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace Game.NET
 {
     [Serializable]
-    public class ShaderCompilationErrorException : Exception
+    public class ShaderCompilationErrorException : GameException
     {
         private const string ShaderExceptionText = "Unable to load shader.";
 

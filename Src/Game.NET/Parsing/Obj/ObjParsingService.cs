@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Game.NET;
 
-namespace Game.NET.Parser.Parsing
+namespace Game.NET.Parsing.Obj
 {
-    public class ObjParsingService : IParsingService
+    internal class ObjParsingService : IParsingService
     {
         private readonly ObjParsingWorker _worker = new ObjParsingWorker();
         internal readonly IDictionary<string, Action<string, Mesh>> ProcessDictionary;
