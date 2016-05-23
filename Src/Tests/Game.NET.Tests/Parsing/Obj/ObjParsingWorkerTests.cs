@@ -1,13 +1,12 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Numerics;
-using Game.NET.Parser.Parsing;
+using Game.NET.Parsing.Obj;
 using NUnit.Framework;
 
-namespace Game.NET.Parser.Tests.Parsing
+namespace Game.NET.Tests.Parsing.Obj
 {
     [TestFixture]
-    public class ParsingWorkerTests
+    public class ObjParsingWorkerTests
     {
         [Test]
         public void ProcessObject_ShouldAddNewSubmesh()
@@ -100,7 +99,7 @@ namespace Game.NET.Parser.Tests.Parsing
         {
             Mesh mesh = new Mesh();
             ObjParsingWorker worker = new ObjParsingWorker();
-            
+
             Assert.That(() => worker.ProcessTextCoord(string.Empty, mesh), Throws.InvalidOperationException);
         }
 

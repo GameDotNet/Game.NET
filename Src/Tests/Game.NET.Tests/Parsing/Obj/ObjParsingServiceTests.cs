@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.NET.Parser.Parsing;
+using Game.NET.Parsing.Obj;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 
-namespace Game.NET.Parser.Tests.Parsing
+namespace Game.NET.Tests.Parsing.Obj
 {
     [TestFixture]
-    public class ParsingServiceTests
+    public class ObjParsingServiceTests
     {
         private readonly Fixture _fixture = new Fixture();
-
-        private readonly ICollection<string> _processIds = new List<string> { "o", "v", "vt", "vn", "f", "mtllib", "usemtl", "s" };
+        private readonly ICollection<string> _processIds = new List<string>
+        {
+            "o", "v", "vt", "vn", "f", "mtllib", "usemtl", "s"
+        };
 
         [Test]
         public void CanInitializeProcessDictionary()

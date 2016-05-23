@@ -1,9 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Reflection;
+using Game.NET.Parsing;
 using NUnit.Framework;
-using Game.NET;
 
 namespace Game.NET.AcceptanceTests
 {
@@ -25,8 +24,8 @@ namespace Game.NET.AcceptanceTests
             string fileName = "box.obj.txt";
             string path = $"{AssemblyDirectory}\\FakeData\\{fileName}";
 
-            Parser.FileParser p = new Parser.FileParser(new Parser.File.FileLoader(), new Parser.Parsing.ObjParsingService());
-            Mesh mesh = p.LoadMesh(path);
+            FileParser p = new FileParser();
+            Mesh mesh = p.LoadMesh(path, FileType.Obj);
 
             Assert.That(mesh, Is.Not.Null);
             Assert.That(mesh.Filename, Is.EqualTo(fileName));
