@@ -9,14 +9,9 @@ namespace Game.NET
     {
         private readonly IResourceManager _resourceManager;
 
-        public ShaderFactory() : this(new ResourceManager())
+        public ShaderFactory()
         {
-            
-        }
-
-        internal ShaderFactory(IResourceManager resourceMaganer)
-        {
-            _resourceManager = resourceMaganer;
+            _resourceManager = new ResourceManager();
         }
 
         public ShaderProgram CreateProgramFromFiles(string name, ICollection<ShaderFileInfo> shaders)
