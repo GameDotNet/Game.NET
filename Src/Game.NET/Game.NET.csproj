@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\GameTime.cs" />
+    <Compile Include="Core\Input.cs" />
     <Compile Include="Logic\Entity.cs" />
     <Compile Include="Logic\State.cs" />
     <Compile Include="Parsing\Menu\MenuParsingService.cs" />
