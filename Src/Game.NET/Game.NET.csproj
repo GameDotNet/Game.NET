@@ -78,6 +78,7 @@
     <Compile Include="OpenTKExtensions\VectorExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceManager\ResourceManager.cs" />
+    <Compile Include="Sound\Sound.cs" />
     <Compile Include="Utilities\Startup.cs" />
   </ItemGroup>
   <ItemGroup />
