@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using Game.NET.Core;
+﻿﻿using System.Collections.Generic;
+﻿using Game.NET.Core;
 
 namespace Game.NET.Logic
 {
     public abstract class State
     {
         protected Engine _engine;
-        protected List<Entity> Entities = new List<Entity>();
 
         public State(Engine engine)
         {
