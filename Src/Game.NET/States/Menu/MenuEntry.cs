@@ -10,13 +10,13 @@ namespace Game.NET.States
 
         public virtual void ProcessInput()
         {
-            if (Input.GetButton(Input.Button.Use).IsDown && Action != null)
-                Action(this);
+        //    if (Input.GetButton(Input.Button.Use).IsDown && Action != null)
+        //        Action(this);
         }
 
-        public virtual void Draw(Renderer renderer, Vector2 pos, float size, Color4 color)
-        {
+        //public virtual void Draw(Renderer renderer, Vector2 pos, float size, Color4 color)
+        //{
 
-        }
+        //}
     }
 }
