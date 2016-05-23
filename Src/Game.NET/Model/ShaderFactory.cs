@@ -7,6 +7,13 @@ namespace Game.NET
 {
     public class ShaderFactory
     {
+        private readonly IResourceManager _resourceManager;
+
+        public ShaderFactory()
+        {
+            _resourceManager = new ResourceManager();
+        }
+
         public ShaderProgram CreateProgramFromFiles(string name, ICollection<ShaderFileInfo> shaders)
         {
             try
@@ -16,13 +23,13 @@ namespace Game.NET
                 ShaderProgram program = new ShaderProgram();
                 program.Compile(compiledShaders);
 
-                ResourceManager.Insert(name, program);
+                _resourceManager.Insert(name, program);
 
                 return program;
             }
             catch (System.Exception e)
             {
-                ResourceManager.CleanAll();
+                _resourceManager.CleanAll();
                 throw new ShaderCompilationErrorException(e);
             }
         }
@@ -34,7 +41,7 @@ namespace Game.NET
             shader.Source = source;
             shader.Compile();
 
-            ResourceManager.Insert(name, shader);
+            _resourceManager.Insert(name, shader);
 
             return shader;
         }
@@ -46,7 +53,7 @@ namespace Game.NET
             shader.Source = File.ReadAllText(filename);
             shader.Compile();
 
-            ResourceManager.Insert(name, shader);
+            _resourceManager.Insert(name, shader);
 
             return shader;
         }
