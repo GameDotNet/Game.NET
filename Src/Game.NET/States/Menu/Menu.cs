@@ -46,11 +46,11 @@ namespace Game.NET.States
 
         public override void ProcessInput()
         {
-            if (Input.GetButton(Input.Button.Down).IsDown
-                    || Input.GetButton(Input.Button.AttackDown).IsDown) NextEntry();
-            else if (Input.GetButton(Input.Button.Up).IsDown
-                    || Input.GetButton(Input.Button.AttackUp).IsDown) PreviousEntry();
-            else Entries[Selection].ProcessInput();
+            //if (Input.GetButton(Input.Button.Down).IsDown
+            //        || Input.GetButton(Input.Button.AttackDown).IsDown) NextEntry();
+            //else if (Input.GetButton(Input.Button.Up).IsDown
+            //        || Input.GetButton(Input.Button.AttackUp).IsDown) PreviousEntry();
+            //else Entries[Selection].ProcessInput();
         }
 
         public override void CleanUp()
