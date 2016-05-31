@@ -7,5 +7,6 @@ namespace Game.NET.Parsing.IO
     {
         IEnumerable<string> LoadFile(string path);
         FileStream OpenRead(string path);
+        byte[] ReadBytes(string path);
     }
 }

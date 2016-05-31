@@ -14,5 +14,10 @@ namespace Game.NET.Parsing.IO
         {
             return File.OpenRead(path);
         }
+
+        public byte[] ReadBytes(string path)
+        {
+            return File.ReadAllBytes(path);
+        }
     }
 }

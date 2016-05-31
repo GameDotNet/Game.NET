@@ -43,5 +43,13 @@ namespace Game.NET.Parsing
 
             return mesh;
         }
+
+        public Sound LoadSound(string path, FileType fileType)
+        {
+            var fileName = Path.GetFileName(path);
+            var soundStream = _fileLoader.ReadBytes(path);
+
+            return new Sound(soundStream, fileName);
+        }
     }
 }

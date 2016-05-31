@@ -43,5 +43,22 @@ namespace Game.NET.AcceptanceTests
             // face
             Assert.That(submesh.Faces.Count, Is.EqualTo(20));
         }
+
+        [Test]
+        public void CanLoadSound()
+        {
+            var fileName = "sound.mp3";
+            var path = $"{AssemblyDirectory}\\FakeData\\{fileName}";
+
+            var parser = new FileParser();
+            var sound = parser.LoadSound(path, FileType.Obj);
+
+            Assert.That(sound, Is.Not.Null);
+            Assert.That(sound.SoundArray, Is.Not.Null);
+            Assert.That(sound.FileName, Is.Not.Null);
+            Assert.That(sound.FileExtension, Is.Not.Null);
+            StringAssert.IsMatch(sound.FileName, "sound.mp3");
+            StringAssert.IsMatch(sound.FileExtension, ".mp3");
+        }
     }
 }
