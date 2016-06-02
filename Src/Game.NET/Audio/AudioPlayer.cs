@@ -13,7 +13,6 @@ namespace Game.NET
     public class AudioPlayer<T> : IAudioPlayer where T : WaveStream
     {
         public WaveStream SoundStream { get; }
-        public string Extension { get; }
 
         public AudioPlayer(string resourceName)
         {
@@ -22,7 +21,6 @@ namespace Game.NET
             var memoryStream = new MemoryStream(sound.SoundArray);
 
             SoundStream = (T)Activator.CreateInstance(typeof(T), memoryStream);
-            Extension = sound.FileExtension;
         }
 
         // TODO: Ctor probably will be removed in the future
@@ -30,7 +28,6 @@ namespace Game.NET
         {
             var memoryStream = new MemoryStream(sound.SoundArray);
             SoundStream = (T)Activator.CreateInstance(typeof(T), memoryStream);
-            Extension = sound.FileExtension;
         }
     }
 }
