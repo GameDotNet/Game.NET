@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Audio\AudioManager.cs" />
     <Compile Include="Audio\AudioPlayer.cs" />
+    <Compile Include="Audio\IAudioPlayer.cs" />
     <Compile Include="Audio\Sound.cs" />
     <Compile Include="Exception\GameException.cs" />
     <Compile Include="Exception\ShaderCompilationErrorException.cs" />
