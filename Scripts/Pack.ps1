@@ -20,6 +20,6 @@ foreach ($project in $projects){
 }
 
 # Set build as failed if any error occurred
-#if($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode )  }
+if($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode )  }
 
 write-host "Packeging finished"
