@@ -1,16 +1,20 @@
 <?xml version="1.0"?>
 <package >
-  <metadata>
-    <id>Game.NET</id>
-    <version>1.0.2</version>
-    <title>Game.NET</title>
-    <authors>Jakub Bentkowski, Lukasz Pyrzyk</authors>
-    <owners>Jakub Bentkowski, Lukasz Pyrzyk</owners>
-    <licenseUrl>https://github.com/MrJaqbq/Game.NET/blob/master/License.txt</licenseUrl>
-    <projectUrl>https://github.com/MrJaqbq/Game.NET</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Library for game developers that simplifies usage of meshes, shaders, materials and textures.</description>
-    <copyright>Copyright 2016</copyright>
-    <tags>game opengl shader mesh material texture opentk engine framework gamedev graphic obj parser blender</tags>
-  </metadata>
+	<metadata>
+		<id>Game.NET</id>
+		<version>$version$</version>
+		<title>Game.NET</title>
+		<authors>Jakub Bentkowski, Lukasz Pyrzyk</authors>
+		<owners>Jakub Bentkowski, Lukasz Pyrzyk</owners>
+		<licenseUrl>https://github.com/MrJaqbq/Game.NET/blob/master/License.txt</licenseUrl>
+		<projectUrl>https://github.com/MrJaqbq/Game.NET</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Library for game developers that simplifies usage of meshes, shaders, materials and textures.</description>
+		<copyright>Copyright 2016</copyright>
+		<tags>game opengl shader mesh material texture opentk engine framework gamedev graphic obj parser blender</tags>
+		<dependencies>
+		  <dependency id="OpenTK" version="1.1.2225.0" />
+		  <dependency id="System.Numerics.Vectors" version="4.1.1-beta-23516" />
+		</dependencies>
+	</metadata>
 </package>
