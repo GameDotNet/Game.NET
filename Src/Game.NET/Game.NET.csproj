@@ -58,8 +58,10 @@
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\GameTime.cs" />
     <Compile Include="Core\Input.cs" />
+    <Compile Include="Gfx\TransitionEffect.cs" />
     <Compile Include="Logic\Entity.cs" />
     <Compile Include="Logic\State.cs" />
+    <Compile Include="Logic\Transition.cs" />
     <Compile Include="Parsing\Menu\MenuParsingService.cs" />
     <Compile Include="Parsing\Menu\MenuParsingWorker.cs" />
     <Compile Include="States\Menu\Menu.cs" />
