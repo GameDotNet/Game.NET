@@ -9,7 +9,7 @@ $projects = @(
 
 # pack function for project
 function Pack($path) {
-    nuget pack $path -Properties Configuration=Release -Version $version
+    nuget pack $path -Build -Properties Configuration=Release -Prop Platform=AnyCPU -Version $version 
 }
 
 write-host "Packeging started"
