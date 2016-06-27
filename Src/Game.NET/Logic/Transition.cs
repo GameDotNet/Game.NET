@@ -55,16 +55,16 @@ namespace Game.NET.Logic
             else if (TargetState != null && In != null && !In.IsFinished)
                 In.Update(gameTime, InSpeed);
             else
-                engine.SwitchState(TargetState);
+                _engine.SwitchState(TargetState);
         }
 
-        public override void Draw()
+        /*public override void Draw()
         {
             if (InitialState != null && Out != null && !Out.IsFinished)
                 Out.Draw(InitialState);
             else if (TargetState != null && In != null)
                 In.Draw(TargetState);
-        }
+        }*/
 
         public override void ProcessInput()
         {
