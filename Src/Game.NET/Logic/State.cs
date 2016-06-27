@@ -1,5 +1,5 @@
-﻿﻿﻿using System.Collections.Generic;
-﻿using Game.NET.Core;
+using System.Collections.Generic;
+using Game.NET.Core;
 
 namespace Game.NET.Logic
 {
