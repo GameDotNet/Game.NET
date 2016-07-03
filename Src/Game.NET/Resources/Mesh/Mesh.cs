@@ -1,14 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 using Game.NET.Resources;
+using OpenTK.Graphics.OpenGL;
 
 namespace Game.NET
 {
-    public class Mesh : Resource
+    public class Mesh : Resource, IDisposable
     {
         public string Filename { get; set; }
         public Vector3 MinVertex;
         public Vector3 MaxVertex;
+        private bool _disposed;
 
         public List<ObjSubMesh> ObjSubMeshes { get; set; }
         private List<BaseSubMesh> SubMeshes { get; set; }
@@ -31,6 +34,14 @@ namespace Game.NET
             SubMeshes = new List<BaseSubMesh>();
         }
 
+        public void Upload(BufferUsageHint usage)
+        {
+            foreach (var subMesh in SubMeshes)
+            {
+                subMesh.Upload(usage);
+            }
+        }
+
         public void CopyDataFromObj<T>(int vertexSize, SubMesh<T>.ParseVertex parser, bool clearAfter = false) where T : struct
         {
             SubMeshes.Clear();
@@ -46,6 +57,34 @@ namespace Game.NET
             {
                 ObjSubMeshes.Clear();
             }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        public virtual void Dispose(bool disposing)
+        {
+            if (_disposed) return;
+
+            if (disposing)
+            {
+                foreach (var subMesh in SubMeshes)
+                {
+                    subMesh.Dispose();
+                }
+
+                ObjSubMeshes.Clear();
+            }
+
+            _disposed = true;
+        }
+
+        ~Mesh()
+        {
+            Dispose(false);
         }
     }
 }

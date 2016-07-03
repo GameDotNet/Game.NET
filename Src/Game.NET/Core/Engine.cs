@@ -15,12 +15,22 @@ namespace Game.NET.Core
 
         public bool IsDone { get; private set; }
 
+        public IResourceManager ResourceManager
+        {
+            get
+            {
+                if (_resourceManager == null)
+                    _resourceManager = new ResourceManager();
+                return _resourceManager;
+            }
+        }
+
         private List<State> states = new List<State>();
 
-        private Renderer renderer = new Renderer();
-
         private GameWindow window;
-
+        private Renderer renderer = new Renderer();
+        private IResourceManager _resourceManager;
+        
         private float fpsTime;
         private int frames;
 
@@ -37,7 +47,7 @@ namespace Game.NET.Core
 
             return true;
         }
-
+        
         public void SwitchState(State state)
         {
             if (CurrentState != null) CurrentState.End();
@@ -88,6 +98,7 @@ namespace Game.NET.Core
         {
             IsDone = true;
             // free data
+            ResourceManager.CleanAll();
         }
     }
 }

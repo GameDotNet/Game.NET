@@ -23,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -70,6 +71,7 @@
     <Compile Include="Parsing\Menu\MenuParsingWorker.cs" />
     <Compile Include="Resources\Material\Material.cs" />
     <Compile Include="Resources\Material\Matrix4Uniform.cs" />
+    <Compile Include="Resources\MeshFactory.cs" />
     <Compile Include="Resources\Mesh\VertexAttribute.cs" />
     <Compile Include="Resources\Mesh\SubMesh.cs" />
     <Compile Include="Resources\Material\Uniform.cs" />

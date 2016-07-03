@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 
@@ -25,7 +26,7 @@ namespace Game.NET.Resources
         private uint[] indicies;
         private bool _disposed;
 
-        public delegate Vertex ParseVertex(FaceItem objVert);
+        public delegate Vertex ParseVertex(Vector3? pos, Vector3? norm, Vector2? tex);
 
         public SubMesh(int vertexSize)
         {
@@ -48,7 +49,12 @@ namespace Game.NET.Resources
             
             foreach (var face in obj.Faces.SelectMany(face => face.Items))
             {
-                Vertex vertex = parser(face);
+                Vertex vertex = parser
+                (
+                    obj.Vertices.Any() ? new Vector3?(obj.Vertices[(int) face.Vertex]) : null,
+                    obj.Normals.Any() ? new Vector3?(obj.Normals [(int) face.Normal]) : null,
+                    obj.Textures.Any() ? new Vector2?(obj.Textures[(int) face.Texture]) : null
+                );
 
                 if (!vertList.Contains(vertex))
                 {
