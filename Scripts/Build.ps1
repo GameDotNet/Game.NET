@@ -14,9 +14,9 @@ function Build($path) {
     &$msbuildExe $path
 }
 
-write-host "Packeging started"
+write-host "Build started"
 foreach ($project in $projects){
-    write-host "Building " $project
+    write-host "Building "$project
     Build($project)
 }
 
