@@ -23,19 +23,19 @@ namespace Game.NET.Tests.Model
             Mesh mesh = new Mesh(fileName);
 
             Assert.That(mesh.Filename, Is.EqualTo(fileName));
-            Assert.That(mesh.SubMeshes, Is.Not.Null.And.Empty);
+            Assert.That(mesh.ObjSubMeshes, Is.Not.Null.And.Empty);
         }
 
         [Test]
         public void CanInitializeAllPropertiesByConstructor()
         {
             string filename = _fixture.Create<string>();
-            List<SubMesh> subMeshes = _fixture.Create<List<SubMesh>>();
+            List<ObjSubMesh> subMeshes = _fixture.Create<List<ObjSubMesh>>();
         
             Mesh mesh = new Mesh(filename, subMeshes);
 
             Assert.That(mesh.Filename, Is.EqualTo(filename));
-            Assert.That(mesh.SubMeshes, Is.Not.Null.And.EquivalentTo(subMeshes));
+            Assert.That(mesh.ObjSubMeshes, Is.Not.Null.And.EquivalentTo(subMeshes));
         }
     }
 }

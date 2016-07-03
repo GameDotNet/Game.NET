@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Game.NET
 {
@@ -52,6 +53,7 @@ namespace Game.NET
         {
             if (Contains<T>(resource.Name))
             {
+                Delete(resource);
                 _resources.Remove(resource.Name);
             }
         }
@@ -60,13 +62,28 @@ namespace Game.NET
         {
             if (Contains<T>(name))
             {
+                Delete(_resources[name]);
                 _resources.Remove(name);
             }
         }
 
         public void CleanAll()
         {
+            foreach (var resource in _resources)
+            {
+                Delete(resource.Value);
+            }
+
             _resources.Clear();
+        }
+
+        private void Delete(Resource resource)
+        {
+            IDisposable disposable = resource as IDisposable;
+            if (disposable != null)
+            {
+                disposable.Dispose();
+            }
         }
     }
 }

@@ -8,13 +8,8 @@ namespace Game.NET
     public class ShaderFactory
     {
         private readonly IResourceManager _resourceManager;
-
-        public ShaderFactory() : this(new ResourceManager())
-        {
-            
-        }
-
-        internal ShaderFactory(IResourceManager resourceManager)
+        
+        public ShaderFactory(IResourceManager resourceManager)
         {
             _resourceManager = resourceManager;
         }

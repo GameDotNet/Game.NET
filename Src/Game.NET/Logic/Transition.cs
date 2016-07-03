@@ -1,4 +1,5 @@
 ﻿using Game.NET.Core;
+using Game.NET.Gfx;
 
 namespace Game.NET.Logic
 {
@@ -58,13 +59,13 @@ namespace Game.NET.Logic
                 _engine.SwitchState(TargetState);
         }
 
-        /*public override void Draw()
+        public override void Draw(Renderer renderer, GameTime time)
         {
             if (InitialState != null && Out != null && !Out.IsFinished)
                 Out.Draw(InitialState);
             else if (TargetState != null && In != null)
                 In.Draw(TargetState);
-        }*/
+        }
 
         public override void ProcessInput()
         {
@@ -75,7 +76,7 @@ namespace Game.NET.Logic
         {
 
         }
-
+        
         #endregion
     }
 }
