@@ -9,10 +9,10 @@ $projects = @(
 
 # pack function for project
 function Pack($path) {
-    nuget pack $path -Build -Properties Configuration=Release -Prop Platform=AnyCPU -Version $version 
+    nuget pack $path -Build -Properties Configuration=Release -Prop Platform=AnyCPU -Version $version
 }
 
-write-host "Packeging started"
+write-host "Packaging started"
 # Pack each project
 foreach ($project in $projects){
     write-host "Packing " $project "with suffix version " $version
@@ -22,4 +22,4 @@ foreach ($project in $projects){
 # Set build as failed if any error occurred
 if($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode )  }
 
-write-host "Packeging finished"
+write-host "Packaging finished"
