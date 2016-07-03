@@ -1,4 +1,5 @@
 ﻿using System;
+using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 
 namespace Game.NET
@@ -61,6 +62,9 @@ namespace Game.NET
         protected virtual void Dispose(bool disposing)
         {
             if (_disposed) return;
+
+            if (GraphicsContext.CurrentContext == null || GraphicsContext.CurrentContext.IsDisposed)
+                return;
 
             GL.DeleteShader(Handle);
             Handle = -1;

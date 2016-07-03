@@ -40,7 +40,7 @@ namespace Game.NET.Tests.Parsing.Obj
             Assert.That(mesh.MinVertex, Is.EqualTo(emptyMesh.MinVertex));
             Assert.That(mesh.MaxVertex, Is.EqualTo(emptyMesh.MaxVertex));
             Assert.That(mesh.Filename, Is.Null);
-            Assert.That(mesh.SubMeshes, Is.Empty);
+            Assert.That(mesh.ObjSubMeshes, Is.Empty);
         }
 
         [Test]

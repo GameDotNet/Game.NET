@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using Game.NET.Logic;
 using Game.NET.Parsing.IO;
 using Game.NET.Parsing.Obj;
 
@@ -24,10 +25,10 @@ namespace Game.NET.Parsing
         {
             return new Dictionary<FileType, IParsingService>()
             {
-                [FileType.Obj] = new ObjParsingService(),
+                [FileType.Obj] = new ObjParsingService()
             };
         }
-
+        
         public Mesh LoadMesh(string path, FileType fileType)
         {
             string fileName = Path.GetFileName(path);

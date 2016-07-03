@@ -58,12 +58,23 @@
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\GameTime.cs" />
     <Compile Include="Core\Input.cs" />
+    <Compile Include="Gfx\RenderBatch.cs" />
+    <Compile Include="Gfx\Renderer.cs" />
+    <Compile Include="Gfx\RenderTarget.cs" />
+    <Compile Include="Gfx\Sprite.cs" />
     <Compile Include="Gfx\TransitionEffect.cs" />
     <Compile Include="Logic\Entity.cs" />
     <Compile Include="Logic\State.cs" />
     <Compile Include="Logic\Transition.cs" />
     <Compile Include="Parsing\Menu\MenuParsingService.cs" />
     <Compile Include="Parsing\Menu\MenuParsingWorker.cs" />
+    <Compile Include="Resources\Material\Material.cs" />
+    <Compile Include="Resources\Material\Matrix4Uniform.cs" />
+    <Compile Include="Resources\Mesh\VertexAttribute.cs" />
+    <Compile Include="Resources\Mesh\SubMesh.cs" />
+    <Compile Include="Resources\Material\Uniform.cs" />
+    <Compile Include="Resources\Mesh\Vertex.cs" />
+    <Compile Include="Resources\SpriteSheet.cs" />
     <Compile Include="States\Menu\Menu.cs" />
     <Compile Include="States\Menu\MenuEntry.cs" />
     <Compile Include="Utils\Exception\GameException.cs" />
@@ -78,7 +89,7 @@
     <Compile Include="Resources\ShaderFactory.cs" />
     <Compile Include="Resources\Shader\ShaderFileInfo.cs" />
     <Compile Include="Resources\Shader\ShaderProgram.cs" />
-    <Compile Include="Resources\Mesh\SubMesh.cs" />
+    <Compile Include="Resources\Mesh\ObjSubMesh.cs" />
     <Compile Include="Utils\OpenTKExtensions\VectorExtension.cs" />
     <Compile Include="Parsing\FileParser.cs" />
     <Compile Include="Parsing\FileType.cs" />
@@ -94,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Logic\Dialog\" />
+    <Folder Include="Parsing\State\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

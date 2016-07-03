@@ -31,10 +31,10 @@ namespace Game.NET.AcceptanceTests
             Assert.That(mesh.Filename, Is.EqualTo(fileName));
 
             // object
-            Assert.That(mesh.SubMeshes.Count, Is.EqualTo(1));
+            Assert.That(mesh.ObjSubMeshes.Count, Is.EqualTo(1));
 
             // vertex
-            SubMesh submesh = mesh.SubMeshes.First();
+            ObjSubMesh submesh = mesh.ObjSubMeshes.First();
             Assert.That(submesh.Vertices.Count, Is.EqualTo(12));
 
             // normal

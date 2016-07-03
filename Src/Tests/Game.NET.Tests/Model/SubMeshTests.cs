@@ -8,7 +8,7 @@ namespace Game.NET.Tests.Model
         [Test]
         public void CanInitializePropertiesByConstructor()
         {
-            SubMesh subMesh = new SubMesh();
+            ObjSubMesh subMesh = new ObjSubMesh();
 
             Assert.That(subMesh.Faces, Is.Not.Null.And.Empty);
             Assert.That(subMesh.Normals, Is.Not.Null.And.Empty);

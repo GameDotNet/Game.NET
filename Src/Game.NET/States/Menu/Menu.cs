@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Game.NET.Core;
+using Game.NET.Gfx;
 using Game.NET.Logic;
 
 namespace Game.NET.States
@@ -40,6 +41,11 @@ namespace Game.NET.States
         }
 
         public override void Update(GameTime gameTime)
+        {
+
+        }
+
+        public override void Draw(Renderer renderer, GameTime time)
         {
 
         }

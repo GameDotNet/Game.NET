@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Game.NET.Core;
+using Game.NET.Gfx;
 
 namespace Game.NET.Logic
 {
@@ -22,5 +23,7 @@ namespace Game.NET.Logic
         public abstract void ProcessInput();
 
         public abstract void CleanUp();
+
+        public abstract void Draw(Renderer renderer, GameTime time);
     }
 }
